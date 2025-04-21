@@ -1,42 +1,133 @@
+/* src/app/globals.css (Version Complète et Corrigée) */
+
+/* Définition des variables CSS globales */
 :root {
+  /* --- Thème Clair (Par Défaut) --- */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #171717;          /* Couleur principale du texte */
+  --color-text-primary: #171717;   /* Texte primaire (souvent identique à foreground) */
+  --color-text-secondary: #777777;  /* Texte plus discret */
+  --color-border-light: #EAEAEA;   /* Bordures/Séparateurs légers */
+  --color-accent-gold: #C6A679;    /* Accent doré/ocre */
+  --color-success: #4CAF50;       /* Vert pour succès/validation */
+  --color-error: #F44336;        /* Rouge pour erreur/attention */
+  /* Ajouter d'autres couleurs spécifiques si besoin (ex: --sezane-ecru: #FAF0E6;) */
+
+  /* --- Variables d'Espacement --- */
+  --spacing-unit: 8px;             /* Unité de base pour marges/paddings */
+
+  /* --- Variables de Police (Les valeurs réelles sont injectées par next/font via les classes sur <html>) --- */
+  /* Fournir des fallbacks ici est une bonne pratique si les polices web ne chargent pas */
+  --font-playfair: 'Times New Roman', Times, serif; /* Fallback Serif */
+  --font-lato: Arial, Helvetica, sans-serif;      /* Fallback Sans-Serif */
+
+  /* --- Autres variables globales --- */
+   --max-width-container: 1024px;   /* Largeur max du contenu principal */
+   --header-height: 60px;           /* Hauteur du header si fixe (ajuster) */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* --- Thème Sombre (via classe ajoutée par next-themes) --- */
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --color-text-primary: #ededed;
+  --color-text-secondary: #aaaaaa;
+  --color-border-light: #333333;
+  --color-accent-gold: #C6A679;    /* L'accent peut rester le même ou être ajusté */
+  /* Les couleurs success/error peuvent aussi être ajustées si besoin */
+  /* --color-success: #66BB6A; */
+  /* --color-error: #EF5350; */
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* --- Reset CSS Minimaliste --- */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* --- Styles Globaux HTML & Body --- */
+html {
+   /* Optionnel: Aide le navigateur à mieux gérer les couleurs système */
+   /* Mais peut interférer avec next-themes si mal utilisé. A tester. */
+   /* color-scheme: light dark; */
+   scroll-behavior: smooth; /* Défilement fluide pour les ancres (#) */
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+html,
+body {
+  max-width: 100vw;
+  /* overflow-x: hidden; /* Empêche le débordement horizontal */
+}
+
+body {
+  color: var(--foreground); /* Utilise la variable de couleur du texte */
+  background: var(--background); /* Utilise la variable de couleur de fond */
+  /* Appliquer les polices via les variables (classes injectées dans layout.tsx) */
+  font-family: var(--font-lato), Arial, Helvetica, sans-serif; /* Police corps par défaut */
+  -webkit-font-smoothing: antialiased; /* Améliore le rendu du texte sur Webkit */
+  -moz-osx-font-smoothing: grayscale; /* Améliore le rendu du texte sur Firefox */
+  line-height: 1.6; /* Espacement vertical pour la lisibilité */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Transition douce des thèmes */
+}
+
+/* --- Styles par défaut pour les éléments courants --- */
+main {
+   display: block; /* Assure le rendu correct en tant que block */
+   min-height: calc(100vh - var(--header-height) - 50px); /* Exemple pour pousser le footer en bas (ajuster la hauteur du footer) */
+   /* Le padding et max-width sont souvent gérés dans un composant Layout ou directement sur les sections */
+}
+
+a {
+  color: inherit; /* Hérite la couleur du parent par défaut */
+  text-decoration: none; /* Pas de soulignement par défaut */
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--color-accent-gold); /* Changement de couleur au survol */
+}
+
+/* --- Styles Typographiques de Base --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), serif; /* Police titre par défaut */
+  font-weight: 700; /* Gras par défaut pour les titres */
+  margin-top: calc(var(--spacing-unit) * 4); /* Espace avant les titres */
+  margin-bottom: calc(var(--spacing-unit) * 2); /* Espace après les titres */
+  line-height: 1.3; /* Hauteur de ligne pour les titres */
+  color: var(--color-text-primary); /* Utiliser la couleur primaire */
+}
+
+/* Tailles de police par défaut (ajuster selon le design) */
+h1 { font-size: 2.5rem; margin-top: 0; } /* Pas d'espace avant le premier h1 de la page */
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; margin-top: calc(var(--spacing-unit) * 3); }
+h4 { font-size: 1.2rem; }
+
+p {
+  margin-bottom: calc(var(--spacing-unit) * 2); /* Espace sous les paragraphes */
+}
+
+ul, ol {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  padding-left: calc(var(--spacing-unit) * 3); /* Indentation standard pour les listes */
+}
+
+li {
+  margin-bottom: var(--spacing-unit); /* Espace entre les éléments de liste */
+}
+
+strong, b {
+  font-weight: 700; /* Assure que la graisse "bold" de Lato est utilisée */
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* Optionnel: améliorer l'accessibilité du focus */
+*:focus-visible {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 2px;
+  border-radius: 2px; /* Pour que l'outline suive les coins arrondis */
 }

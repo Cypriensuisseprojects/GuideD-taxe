@@ -1,27 +1,28 @@
-{
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
+{ // Accolade ouvrante globale
+  "compilerOptions": { // Accolade ouvrante pour compilerOptions
+    "baseUrl": ".", // Ajouté - Note la virgule si ce n'est PAS la dernière ligne
+    "target": "ES2017", // Virgule après
+    "lib": ["dom", "dom.iterable", "esnext"], // Virgule après
+    "allowJs": true, // Virgule après
+    "skipLibCheck": true, // Virgule après
+    "strict": true, // Virgule après
+    "noEmit": true, // Virgule après
+    "esModuleInterop": true, // Virgule après
+    "module": "esnext", // Virgule après
+    "moduleResolution": "bundler", // Virgule après
+    "resolveJsonModule": true, // Virgule après
+    "isolatedModules": true, // Virgule après
+    "jsx": "preserve", // Virgule après
+    "incremental": true, // Virgule après
+    "plugins": [ // Virgule après l'array
       {
         "name": "next"
-      }
-    ],
-    "paths": {
+      } // Pas de virgule après le dernier objet de l'array
+    ], // Fin de l'array, virgule après
+    "paths": { // Pas de virgule après le dernier élément de l'objet paths
       "@/*": ["./src/*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
-}
+    } // Fin de l'objet paths, PAS de virgule ici car c'est le dernier élément de compilerOptions
+  }, // Accolade fermante pour compilerOptions, virgule après
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"], // Virgule après
+  "exclude": ["node_modules"] // PAS de virgule après le dernier élément de l'objet global
+} // Accolade fermante globale

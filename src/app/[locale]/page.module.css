@@ -1,0 +1,253 @@
+/* src/app/page.module.css */
+
+/* Style pour les sections principales */
+.pageSection {
+  margin-top: calc(var(--spacing-unit) * 6); /* Espace conséquent entre sections */
+  padding-top: calc(var(--spacing-unit) * 2); /* Espace pour l'ancre lors du clic */
+  border-top: 1px solid var(--color-border-light); /* Ligne de séparation légère */
+}
+.pageSection:first-child {
+    margin-top: 0; /* Pas d'espace avant la première section */
+    padding-top: 0;
+    border-top: none; /* Pas de bordure avant la première section */
+}
+
+/* --- NOUVEAUX STYLES POUR L'ACCUEIL EN 2 COLONNES --- */
+.accueilColumns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing-unit) * 4);
+  margin-top: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.accueilColumn {
+  flex: 1;
+  min-width: 280px; /* Ajuster si besoin */
+}
+.accueilColumn h2 { /* Ajuster marge du titre dans la colonne 1 */
+   margin-top: 0;
+}
+.accueilColumn h3 { /* Ajuster marge du titre dans la colonne 2 */
+   margin-top: 0;
+}
+
+
+.accueilNavList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.accueilNavList li {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.accueilNavList a {
+  display: block;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2); /* Plus de padding horizontal */
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.accueilNavList a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.07);
+  border-color: var(--color-accent-gold);
+  color: var(--foreground);
+}
+
+.accueilNavList strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: calc(var(--spacing-unit) / 2);
+  color: var(--color-accent-gold);
+  font-family: var(--font-playfair), serif; /* Police titre pour le titre du lien */
+}
+
+.accueilNavList small {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* Style pour la note de langue sous les colonnes */
+.noteLangue {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: calc(var(--spacing-unit) * 2);
+}
+
+/* Style pour les notes/infos pratiques */
+.note {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  display: block; /* Pour forcer un retour à la ligne si besoin */
+  margin-top: calc(var(--spacing-unit) * 1);
+}
+
+/* Style de base pour l'accordéon FAQ natif */
+.faqItem {
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--spacing-unit);
+  padding-bottom: var(--spacing-unit);
+}
+
+.faqItem summary {
+  cursor: pointer;
+  font-weight: bold;
+  padding: calc(var(--spacing-unit) * 1) 0;
+  position: relative; /* Pour le marqueur potentiel */
+  /* On pourrait ajouter un marqueur +/- via ::before ou ::after */
+}
+
+.faqItem summary:hover {
+   color: var(--color-accent-gold); /* Feedback au survol */
+}
+
+.faqItem p { /* Style du contenu de la réponse */
+   padding: calc(var(--spacing-unit) * 1) 0 0 calc(var(--spacing-unit) * 2); /* Léger retrait */
+   margin-bottom: 0; /* Enlever la marge par défaut du <p> dans la FAQ */
+}
+
+.faqCategory {
+  margin-top: calc(var(--spacing-unit) * 4); /* Espace entre les catégories */
+}
+.faqCategory:first-child {
+    margin-top: calc(var(--spacing-unit) * 2); /* Moins d'espace avant la première catégorie */
+}
+
+.faqCategoryTitle {
+  /* Style pour les titres H3 des catégories */
+  font-size: 1.3rem; /* Un peu plus grand que les H4 */
+  color: var(--color-accent-gold); /* Couleur accentuée */
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  padding-bottom: calc(var(--spacing-unit) * 1);
+  border-bottom: 1px solid var(--color-border-light); /* Soulignement léger */
+}
+
+/* Style pour les listes imbriquées (ex: Etapes) */
+.nestedList {
+   margin-top: calc(var(--spacing-unit) * 1);
+   margin-bottom: calc(var(--spacing-unit) * 1);
+   /* padding-left: calc(var(--spacing-unit) * 2); Pas nécessaire car ul/li ont déjà un padding */
+}
+
+/* Style pour les icônes texte (simples) */
+.iconCheck {
+  color: var(--color-success);
+  margin-right: var(--spacing-unit);
+  display: inline-block; /* Pour l'alignement */
+}
+.iconCross {
+   color: var(--color-error);
+   margin-right: var(--spacing-unit);
+   display: inline-block;
+}
+
+/* Optionnel: Style pour mettre en évidence le départ hors France */
+.highlightBox {
+  background-color: #fffbe6; /* Jaune très pâle */
+  border: 1px solid #ffe58f; /* Bordure dorée pâle */
+  border-left-width: 4px;
+  padding: calc(var(--spacing-unit) * 2);
+  margin: calc(var(--spacing-unit) * 3) 0;
+  border-radius: 4px;
+}
+html.dark .highlightBox {
+   background-color: #3b322f; /* Fond sombre adapté */
+   border-color: var(--color-accent-gold);
+}
+.highlightBox h3 {
+   margin-top: 0;
+   font-size: 1.2em; /* Ajuster taille titre */
+}
+
+/* Conteneur pour les éléments d'accordéon */
+.accordionContainer {
+    margin-top: calc(var(--spacing-unit) * 2);
+    border: 1px solid var(--color-border-light); /* Optionnel: encadrer l'accordéon */
+    border-radius: 6px;
+    overflow: hidden; /* Pour les coins arrondis */
+}
+
+/* Style pour chaque item <details> */
+.accordionItem {
+  border-bottom: 1px solid var(--color-border-light);
+}
+.accordionItem:last-child {
+  border-bottom: none; /* Pas de bordure pour le dernier */
+}
+
+/* Style pour le titre <summary> */
+.accordionTitle {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem; /* Un peu plus grand */
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  background-color: var(--background); /* Même fond que la page */
+  transition: background-color 0.2s ease;
+  display: list-item; /* Assure l'affichage du marqueur flèche */
+  list-style: none; /* Masquer la flèche par défaut si on en met une custom */
+  position: relative; /* Pour la flèche custom */
+  padding-left: calc(var(--spacing-unit) * 4); /* Espace pour la flèche custom */
+}
+
+/* Ajouter une flèche custom (optionnel) */
+.accordionTitle::before {
+    content: '▶'; /* Flèche simple */
+    position: absolute;
+    left: calc(var(--spacing-unit) * 1.5);
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.2s ease;
+    font-size: 0.8em;
+    color: var(--color-text-secondary);
+}
+/* Rotation de la flèche quand l'accordéon est ouvert */
+.accordionItem[open] > .accordionTitle::before {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+
+.accordionTitle:hover {
+   background-color: #f9f9f9; /* Léger fond au survol */
+   color: var(--color-accent-gold);
+}
+html.dark .accordionTitle:hover {
+    background-color: #1a1a1a;
+}
+
+/* Style pour le contenu <div> à l'intérieur de <details> */
+.accordionContent {
+  padding: calc(var(--spacing-unit) * 2);
+  padding-top: var(--spacing-unit); /* Moins d'espace en haut */
+  background-color: #fafafa; /* Fond légèrement différent pour le contenu */
+}
+html.dark .accordionContent {
+   background-color: #111111;
+}
+.accordionContent ul { /* S'assurer que les listes internes sont bien stylées */
+  margin-bottom: 0; /* Enlever marge basse de la liste dans l'accordéon */
+}
+
+/* Style pour le conseil final */
+.finalAdviceBox {
+    margin-top: calc(var(--spacing-unit) * 3);
+    border-top: 1px dashed var(--color-border-light);
+    padding-top: calc(var(--spacing-unit) * 2);
+}
+.finalAdviceBox h4 {
+    margin-top: 0;
+    color: var(--color-accent-gold);
+}
+
+/* --- AJOUT POUR PAGE.TSX CORRIGÉ --- */
+/* Style pour les notes utilisées directement dans le JSX (si on garde cette approche) */
+.note {
+    font-style: italic;
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    display: inline; /* Ou block selon le rendu souhaité */
+}

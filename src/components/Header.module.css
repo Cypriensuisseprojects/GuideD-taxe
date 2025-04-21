@@ -1,0 +1,183 @@
+/* src/components/Header.module.css (Version Complète avec Sticky et Styles Contrôles) */
+
+.header {
+  /* ----- Mise en page Flexbox ----- */
+  display: flex;
+  justify-content: space-between; /* Espace entre logo, nav, contrôles */
+  align-items: center; /* Alignement vertical */
+
+  /* ----- Espacement & Bordure ----- */
+  padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3); /* Haut/Bas et Gauche/Droite */
+  border-bottom: 1px solid var(--color-border-light); /* Ligne inférieure */
+
+  /* ----- Apparence & Transitions ----- */
+  background-color: var(--background); /* Fond qui change avec le thème */
+  transition: background-color 0.2s ease, border-color 0.2s ease; /* Transition douce pour le thème */
+
+  /* ----- == Option Sticky == ----- */
+  position: sticky;   /* Rend l'élément collant */
+  top: 0;             /* Se colle en haut de la fenêtre */
+  left: 0;
+  width: 100%;        /* Prend toute la largeur */
+  z-index: 100;       /* Assure qu'il est au-dessus du contenu */
+  /* Optionnel: Ombre portée légère pour détacher du contenu lors du scroll */
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+}
+
+/* --- NOUVEAUX STYLES POUR LOGO + SOUS-TITRE --- */
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.logoTitle {
+  font-family: var(--font-playfair), serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--foreground);
+  display: inline-block; /* Important pour Link */
+  transition: color 0.2s ease; /* Ajouter transition pour le survol */
+}
+/* S'assurer que le Link parent n'affecte pas le style direct du span */
+.logoContainer a { text-decoration: none; color: inherit; }
+.logoContainer a:hover .logoTitle {
+   color: var(--color-accent-gold); /* Effet survol sur le titre */
+   text-decoration: none;
+}
+
+
+.logoSubtitle {
+  font-family: var(--font-lato), sans-serif;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: -2px; /* Ajustement fin */
+  display: block;
+}
+/* --- FIN NOUVEAUX STYLES LOGO --- */
+
+
+/* ----- Style de la Navigation ----- */
+.nav {
+  display: flex; /* Aligner les liens horizontalement */
+  gap: calc(var(--spacing-unit) * 3); /* Espace entre les liens de navigation */
+}
+
+.nav a {
+  color: var(--color-text-secondary); /* Couleur secondaire pour les liens nav */
+  text-decoration: none;
+  font-size: 0.9rem;
+  position: relative; /* Pour le pseudo-élément de survol */
+  padding-bottom: 4px; /* Espace pour le trait de survol */
+  transition: color 0.2s ease;
+}
+
+/* Effet de soulignement subtil au survol pour la nav */
+.nav a::after {
+   content: '';
+   position: absolute;
+   width: 0;
+   height: 1px;
+   bottom: 0;
+   left: 50%;
+   transform: translateX(-50%);
+   background-color: var(--color-accent-gold);
+   transition: width 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--foreground); /* Couleur principale au survol */
+  text-decoration: none; /* Enlever le soulignement par défaut */
+}
+ .nav a:hover::after {
+    width: 100%; /* Animer la largeur du soulignement */
+ }
+
+/* ----- Styles pour les Contrôles (Thème + Langue) ----- */
+.controlsWrapper {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 2); /* Espace entre le toggle thème et les drapeaux */
+}
+
+/* Style du bouton de thème */
+.themeToggle {
+  background: none;
+  border: none;
+  padding: calc(var(--spacing-unit) / 2);
+  cursor: pointer;
+  color: var(--foreground); /* Couleur de l'icône */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Look rond */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  width: 32px;
+  height: 32px;
+}
+.themeToggle:hover {
+ background-color: var(--color-border-light); /* Léger fond au survol */
+ color: var(--color-accent-gold); /* Couleur accent icône */
+}
+.themeToggle:active {
+  transform: scale(0.9); /* Effet d'appui */
+}
+.themeToggle svg {
+  display: block; /* Assure bon affichage de l'icône */
+}
+
+/* Style pour le conteneur des drapeaux */
+.langSelectorFlags {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 1); /* Espace entre les drapeaux */
+}
+
+/* Style de base pour chaque bouton drapeau */
+.flagButton {
+  background: none;
+  border: 1px solid transparent; /* Bordure invisible pour la taille */
+  padding: 2px; /* Petit espace autour de l'image */
+  cursor: pointer;
+  opacity: 0.6; /* Moins visible si inactif */
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  line-height: 0; /* Important pour alignement image */
+  border-radius: 3px; /* Coins arrondis */
+}
+
+/* Style au survol (sauf si désactivé/actif) */
+.flagButton:hover:not(:disabled) {
+  opacity: 1;
+  transform: scale(1.1); /* Effet zoom */
+  border-color: var(--color-accent-gold); /* Bordure d'accent */
+}
+
+/* Style spécifique pour le drapeau actif */
+.flagButton.activeFlag {
+  opacity: 1;
+  cursor: default; /* Pas d'effet pointeur */
+  transform: scale(1); /* Annuler le zoom */
+  border-color: var(--foreground); /* Bordure pour indiquer l'état actif */
+}
+.flagButton:disabled { /* Style quand le bouton est désactivé (langue actuelle) */
+   cursor: default;
+   opacity: 1; /* Pas besoin de le rendre transparent */
+   border-color: var(--foreground); /* Bordure pour indiquer l'état actif */
+}
+
+/* Style pour l'image du drapeau */
+.flagIcon {
+  display: block; /* Empêche les espaces sous l'image */
+  width: 24px;    /* Taille fixe */
+  height: auto;   /* Maintient le ratio */
+  border-radius: 2px; /* Coins arrondis pour l'image */
+  /* Optionnel : très légère bordure pour délimiter les drapeaux clairs sur fond clair */
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+/* Style pour le placeholder (utilisé dans Header.tsx si besoin) */
+.controlsPlaceholder {
+  visibility: hidden; /* Cache mais garde l'espace */
+  /* S'assurer que la taille correspond aux vrais contrôles */
+}
