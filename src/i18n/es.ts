@@ -109,10 +109,10 @@ export default {
       documents_titre: "Reúne tus documentos:",
       // --- VERIFICACIÓN: Array de strings ---
       documents_liste: [
-         "Tu pasaporte",
-         "Todos tus formularios Tax Free (Sézane/Global Blue y otros)",
-         "Tus billetes de transporte",
-         "**Los artículos comprados:** Mantenlos accesibles (equipaje de mano), **nuevos, sin usar**.",
+        "Tu pasaporte",
+        "Todos tus formularios Tax Free (Sézane/Global Blue y otros)",
+        "Tus billetes de transporte",
+        "**Los artículos comprados:** Mantenlos accesibles (equipaje de mano), **nuevos, sin usar**.",
       ],
       // --- FIN VERIFICACIÓN ---
       validation_titre: "Encuentra la Aduana / Terminales PABLO:",
@@ -153,10 +153,10 @@ export default {
       eurostar: "**París - Gare du Nord (Eurostar hacia Londres):** Zona de Tax Refund específica ANTES del control de pasaportes/seguridad. Prevé tiempo.",
     },
     frontieres_routieres: {
-        titre: "🚗 Fronteras Terrestres (especialmente hacia Suiza)",
-        intro: "Si sales de Francia en coche.",
-        suisse: "**Hacia Suiza:** Puestos de aduanas franceses en los principales puntos de paso (ej: cerca de Ginebra; La Ferrière). Verifica el servicio de Tax Free y los horarios.",
-        autres_pays: "**Hacia otros países fuera de la UE (Andorra...):** Infórmate sobre los puestos de aduanas en el punto de salida.",
+      titre: "🚗 Fronteras Terrestres (especialmente hacia Suiza)",
+      intro: "Si sales de Francia en coche.",
+      suisse: "**Hacia Suiza:** Puestos de aduanas franceses en los principales puntos de paso (ej: cerca de Ginebra; La Ferrière). Verifica el servicio de Tax Free y los horarios.",
+      autres_pays: "**Hacia otros países fuera de la UE (Andorra...):** Infórmate sobre los puestos de aduanas en el punto de salida.",
     },
     ports: {
       titre: "🚢 Puertos Marítimos (Ferry)",
@@ -169,7 +169,7 @@ export default {
     }
   },
 
-   // --- SECCIÓN FAQ ---
+  // --- SECCIÓN FAQ ---
   faq: {
     titre: "Preguntas Frecuentes (FAQ)",
     intro: "Encuentra aquí las respuestas a las preguntas más comunes.",
@@ -206,9 +206,9 @@ export default {
   },
 
   // --- DISCLAIMER ---
-   disclaimer: {
-     titre: "Aviso Legal y Descargo de Responsabilidad",
-     texte: "Esta información se proporciona a título orientativo, basada en textos oficiales ([lien douane.gouv.fr]) y prácticas de Global Blue ([lien globalblue.com]), a fecha de [Date MAJ Site]. Las reglas pueden cambiar. Verifique siempre fuentes oficiales. Sézane no se responsabiliza de infos obsoletas o denegación de devolución."
-   },
+  disclaimer: {
+    titre: "Aviso Legal y Descargo de Responsabilidad",
+    texte: "Esta información se proporciona a título orientativo, basada en textos oficiales ([lien douane.gouv.fr]) y prácticas de Global Blue ([lien globalblue.com]), a fecha de [Date MAJ Site]. Las reglas pueden cambiar. Verifique siempre fuentes oficiales. Sézane no se responsabiliza de infos obsoletas o denegación de devolución."
+  },
 
 } as const; // Important for type-safety

@@ -109,12 +109,12 @@ export default {
       documents_titre: "Gather your documents:",
       // --- VÉRIFICATION : Ceci est bien un tableau de strings ---
       documents_liste: [
-         "Your passport",
-         "All your tax free forms (Sézane/Global Blue and others)",
-         "Your travel tickets",
-         "**The purchased items:** Keep them easily accessible (hand luggage ideally), **new, unused**.",
+        "Your passport",
+        "All your tax free forms (Sézane/Global Blue and others)",
+        "Your travel tickets",
+        "**The purchased items:** Keep them easily accessible (hand luggage ideally), **new, unused**.",
       ],
-       // --- FIN VÉRIFICATION ---
+      // --- FIN VÉRIFICATION ---
       validation_titre: "Find Customs / PABLO Terminals:",
       validation_moment: "Head to the tax refund area **BEFORE checking in your luggage**.",
       validation_borne: "Look for the electronic **\"PABLO\" terminals**. See our [Where to Validate? section](#ou-valider).", // Lien interne
@@ -153,10 +153,10 @@ export default {
       eurostar: "**Paris - Gare du Nord (Eurostar to London):** Dedicated tax refund area BEFORE passport/security checks. Allow time.",
     },
     frontieres_routieres: {
-        titre: "🚗 Road Borders (especially to Switzerland)",
-        intro: "If leaving France by car.",
-        suisse: "**To Switzerland:** French customs offices at main crossings (e.g., near Geneva; La Ferrière). Check for tax refund service and opening hours.",
-        autres_pays: "**To other non-EU countries (Andorra...):** Inquire about customs posts at the exit point.",
+      titre: "🚗 Road Borders (especially to Switzerland)",
+      intro: "If leaving France by car.",
+      suisse: "**To Switzerland:** French customs offices at main crossings (e.g., near Geneva; La Ferrière). Check for tax refund service and opening hours.",
+      autres_pays: "**To other non-EU countries (Andorra...):** Inquire about customs posts at the exit point.",
     },
     ports: {
       titre: "🚢 Sea Ports (Ferry)",
@@ -169,7 +169,7 @@ export default {
     }
   },
 
-   // --- SECTION FAQ ---
+  // --- SECTION FAQ ---
   faq: {
     titre: "Frequently Asked Questions (FAQ)",
     intro: "Find answers to the most common questions here.",
@@ -206,9 +206,9 @@ export default {
   },
 
   // --- DISCLAIMER ---
-   disclaimer: {
-     titre: "Legal Notice & Disclaimer",
-     texte: "This information is for guidance, based on official texts ([lien douane.gouv.fr]) and Global Blue practices ([lien globalblue.com]), as of [Site Update Date]. Rules may change. Always check official sources. Sézane is not liable for outdated info or refund refusal."
-   },
+  disclaimer: {
+    titre: "Legal Notice & Disclaimer",
+    texte: "This information is for guidance, based on official texts ([lien douane.gouv.fr]) and Global Blue practices ([lien globalblue.com]), as of [Site Update Date]. Rules may change. Always check official sources. Sézane is not liable for outdated info or refund refusal."
+  },
 
 } as const;

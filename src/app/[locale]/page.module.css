@@ -1,253 +1,287 @@
-/* src/app/page.module.css */
+/* src/app/[locale]/page.module.css (Version Complète Finale) */
 
-/* Style pour les sections principales */
+/* --- Styles Globaux Section --- */
 .pageSection {
   margin-top: calc(var(--spacing-unit) * 6); /* Espace conséquent entre sections */
   padding-top: calc(var(--spacing-unit) * 2); /* Espace pour l'ancre lors du clic */
   border-top: 1px solid var(--color-border-light); /* Ligne de séparation légère */
 }
-.pageSection:first-child {
-    margin-top: 0; /* Pas d'espace avant la première section */
-    padding-top: 0;
-    border-top: none; /* Pas de bordure avant la première section */
+/* Moins d'espace après l'accueil (qui n'a plus de H1 principal) */
+/* Cibler la première section après l'accueil */
+#accueil + .pageSection {
+    margin-top: calc(var(--spacing-unit) * 4);
 }
-
-/* --- NOUVEAUX STYLES POUR L'ACCUEIL EN 2 COLONNES --- */
-.accueilColumns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(var(--spacing-unit) * 4);
-  margin-top: calc(var(--spacing-unit) * 3);
-  margin-bottom: calc(var(--spacing-unit) * 3);
-}
-
-.accueilColumn {
-  flex: 1;
-  min-width: 280px; /* Ajuster si besoin */
-}
-.accueilColumn h2 { /* Ajuster marge du titre dans la colonne 1 */
-   margin-top: 0;
-}
-.accueilColumn h3 { /* Ajuster marge du titre dans la colonne 2 */
-   margin-top: 0;
+/* S'assurer que l'accueil lui-même n'a pas de bordure ou de marge haute */
+#accueil {
+    margin-top: 0;
+    padding-top: var(--spacing-unit); /* Petit padding haut pour l'accueil */
+    border-top: none;
 }
 
 
-.accueilNavList {
+/* --- Styles Accueil --- */
+/* Style pour le premier bloc d'introduction */
+.accueilIntroBlock {
+  margin-bottom: calc(var(--spacing-unit) * 4); /* Espace avant le bloc de navigation */
+  /* Optionnel: centrer le texte si désiré */
+  /* text-align: center; */
+  /* max-width: 700px; */ /* Limiter la largeur si centré */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+}
+.accueilIntroBlock h2 {
+    margin-top: 0; /* Pas de marge haute pour le premier titre */
+    /* text-align: center; */ /* Centrer si besoin */
+}
+
+/* Style pour la liste de navigation HORIZONTALE */
+.accueilNavListHorizontal {
   list-style: none;
   padding-left: 0;
+  display: flex; /* Aligne les éléments <li> en ligne */
+  flex-wrap: wrap; /* Permet de passer à la ligne sur petits écrans */
+  gap: calc(var(--spacing-unit) * 2); /* Espace entre les cartes */
+  justify-content: center; /* Centrer les cartes horizontalement */
 }
 
-.accueilNavList li {
-  margin-bottom: calc(var(--spacing-unit) * 2);
+.accueilNavListHorizontal li {
+   margin-bottom: 0; /* Enlever la marge basse car gérée par gap */
+   flex: 1 1 200px; /* Flex-grow, flex-shrink, flex-basis -> responsive */
+   /* Chaque carte essaiera de faire au moins 200px de large */
+   max-width: 240px; /* Limiter la largeur max pour éviter qu'elles soient trop larges */
 }
 
-.accueilNavList a {
-  display: block;
-  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2); /* Plus de padding horizontal */
+/* Style pour chaque carte de navigation */
+.navCard {
+  display: block; /* Pour appliquer padding et dimensions */
+  padding: calc(var(--spacing-unit) * 2);
   border: 1px solid var(--color-border-light);
-  border-radius: 6px;
+  border-radius: 8px; /* Coins un peu plus arrondis */
+  height: 100%; /* Pour que toutes les cartes aient la même hauteur si elles sont sur plusieurs lignes */
+  text-align: center; /* Centrer le contenu de la carte */
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   color: var(--foreground);
   text-decoration: none;
+  background-color: var(--background); /* Assurer un fond */
 }
-.accueilNavList a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 10px rgba(0,0,0,0.07);
+.navCard:hover {
+  transform: translateY(-4px); /* Effet de soulèvement plus prononcé */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
   border-color: var(--color-accent-gold);
   color: var(--foreground);
 }
 
-.accueilNavList strong {
+.navCard strong { /* Titre DANS la carte */
   display: block;
   font-size: 1.1rem;
-  margin-bottom: calc(var(--spacing-unit) / 2);
+  margin-bottom: calc(var(--spacing-unit) * 1); /* Espace sous le titre */
   color: var(--color-accent-gold);
-  font-family: var(--font-playfair), serif; /* Police titre pour le titre du lien */
+  font-family: var(--font-playfair), serif;
 }
 
-.accueilNavList small {
+.navCard small { /* Texte DANS la carte */
+  display: block; /* Assurer qu'il est sous le titre */
   font-size: 0.85rem;
   color: var(--color-text-secondary);
+  line-height: 1.4; /* Bonne lisibilité */
 }
 
-/* Style pour la note de langue sous les colonnes */
+/* Style pour la note de langue (inchangé) */
 .noteLangue {
   text-align: center;
   font-size: 0.8rem;
   color: var(--color-text-secondary);
-  margin-top: calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 4); /* Plus d'espace après les cartes */
 }
 
-/* Style pour les notes/infos pratiques */
-.note {
-  font-size: 0.9rem;
+
+
+/* --- Styles Éligibilité (Checklist) --- */
+.checklistContainer {
+    display: grid; /* Grid pour 2 colonnes sur écran large */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
+    gap: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4); /* Espace vertical et horizontal */
+    margin-top: calc(var(--spacing-unit) * 3);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+
+.checklistSubtitle { /* Titres "Voyageur" / "Achats" */
+    font-size: 1.1rem; /* Légèrement plus petit qu'un H3 normal */
+    font-family: var(--font-playfair), serif;
+    color: var(--foreground);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    padding-bottom: calc(var(--spacing-unit) * 0.5);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Style pour chaque item de la checklist (effet carte légère) */
+.checklistItem {
+    display: flex;
+    align-items: flex-start; /* Aligner en haut */
+    gap: calc(var(--spacing-unit) * 1.5); /* Espace icône / texte */
+    padding: calc(var(--spacing-unit) * 1.5);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    border: 1px solid transparent; /* Préparer pour survol */
+    border-radius: 6px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.checklistItem:hover { /* Feedback léger au survol */
+    background-color: rgba(198, 166, 121, 0.05);
+    border-color: rgba(198, 166, 121, 0.2);
+}
+html.dark .checklistItem:hover { /* Adaptation dark mode */
+    background-color: rgba(200, 170, 130, 0.08);
+    border-color: rgba(200, 170, 130, 0.3);
+}
+
+/* Style pour les icônes SVG dans la checklist */
+.checklistIcon {
+    display: inline-block;
+    flex-shrink: 0; /* Ne pas rétrécir */
+    width: 22px;
+    height: 22px;
+    color: var(--color-accent-gold); /* Couleur de l'icône */
+    margin-top: 0.1em; /* Petit ajustement vertical */
+}
+.checklistIcon svg { /* Assurer que le SVG prend la taille et couleur */
+    display: block;
+    width: 100%;
+    height: 100%;
+    stroke-width: 2; /* Épaisseur de trait standard pour Feather */
+}
+
+.checklistItemText { /* Conteneur pour texte + note */
+    flex-grow: 1;
+    line-height: 1.5;
+}
+.checklistItemText p { margin-bottom: 0; } /* Enlever marge du <p> */
+
+.checklistNote { /* Note sous un critère */
+  display: block;
+  font-size: 0.85rem;
   color: var(--color-text-secondary);
-  display: block; /* Pour forcer un retour à la ligne si besoin */
+  margin-top: calc(var(--spacing-unit) * 0.5);
+}
+
+/* Section Produits */
+.produitsInfo {
+    margin-top: calc(var(--spacing-unit) * 4);
+    padding-top: calc(var(--spacing-unit) * 3);
+    border-top: 1px dashed var(--color-border-light);
+}
+.produitsInfo h4 { margin-top: 0; margin-bottom: var(--spacing-unit); }
+.produitsInfo h5 {
+    font-size: 1rem; font-weight: bold;
+    margin-top: calc(var(--spacing-unit) * 2); margin-bottom: var(--spacing-unit);
+    color: var(--color-error); /* Titre "Attention..." en rouge */
+}
+
+.exclusionList { list-style: none; padding-left: 0; margin-bottom: var(--spacing-unit); }
+.exclusionList li { display: flex; align-items: center; gap: var(--spacing-unit); margin-bottom: calc(var(--spacing-unit) * 0.5); }
+
+/* Style pour l'icône SVG croix (x-square) */
+.iconCrossSvg {
+  display: inline-block; width: 16px; height: 16px; color: var(--color-error); flex-shrink: 0;
+}
+.iconCrossSvg svg { display: block; width: 100%; height: 100%; stroke-width: 2; }
+
+
+/* --- Style pour l'Emphase des Mots-Clés --- */
+.keywordEmphasis {
+    font-weight: 700; /* Gras */
+    color: var(--color-accent-gold); /* Couleur d'accent */
+}
+
+
+/* --- Styles Où Valider (Accordéon) --- */
+.highlightBox {
+  background-color: #fffbe6; border: 1px solid #ffe58f; border-left-width: 4px;
+  padding: calc(var(--spacing-unit) * 2); margin: calc(var(--spacing-unit) * 3) 0; border-radius: 4px;
+}
+html.dark .highlightBox { background-color: #3b322f; border-color: var(--color-accent-gold); }
+.highlightBox h3 { margin-top: 0; font-size: 1.2em; }
+
+.accordionContainer {
+    margin-top: calc(var(--spacing-unit) * 2); border: 1px solid var(--color-border-light);
+    border-radius: 6px; overflow: hidden;
+}
+.accordionItem { border-bottom: 1px solid var(--color-border-light); }
+.accordionItem:last-child { border-bottom: none; }
+.accordionTitle {
+  cursor: pointer; font-weight: bold; font-size: 1.1rem;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  background-color: var(--background); transition: background-color 0.2s ease;
+  display: list-item; list-style: none; position: relative;
+  padding-left: calc(var(--spacing-unit) * 4.5); /* Plus d'espace pour la flèche */
+}
+.accordionTitle::before { /* Flèche */
+    content: '▶'; position: absolute; left: calc(var(--spacing-unit) * 1.5); top: 50%;
+    transform: translateY(-50%) rotate(0deg); transition: transform 0.2s ease;
+    font-size: 0.8em; color: var(--color-text-secondary);
+}
+/* Styles pour l'icône dans le titre de l'accordéon */
+.accordionIcon {
+  display: inline-block; /* Aligner avec le texte */
+  width: 1em;  /* Taille relative à la police du titre */
+  height: 1em;
+  margin-right: calc(var(--spacing-unit) * 1); /* Espace avant le texte */
+  vertical-align: -0.15em; /* Ajustement vertical fin */
+  color: var(--color-accent-gold); /* Ou une autre couleur */
+}
+.accordionIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Ajuster le padding du titre si l'icône prend de la place */
+.accordionTitle {
+   padding-left: calc(var(--spacing-unit) * 5.5); /* Augmenter si besoin */
+}
+.accordionTitle::before { /* Ajuster position de la flèche */
+   left: calc(var(--spacing-unit) * 1.5); /* Garder la flèche à gauche */
+}
+.accordionItem[open] > .accordionTitle::before { transform: translateY(-50%) rotate(90deg); }
+.accordionTitle:hover { background-color: #f9f9f9; color: var(--color-accent-gold); }
+html.dark .accordionTitle:hover { background-color: #1a1a1a; }
+.accordionContent { padding: calc(var(--spacing-unit) * 2); padding-top: var(--spacing-unit); background-color: #fafafa; }
+html.dark .accordionContent { background-color: #111111; }
+.accordionContent ul { margin-bottom: 0; }
+.finalAdviceBox { margin-top: calc(var(--spacing-unit) * 3); border-top: 1px dashed var(--color-border-light); padding-top: calc(var(--spacing-unit) * 2); }
+.finalAdviceBox h4 { margin-top: 0; color: var(--color-accent-gold); }
+
+
+/* --- Styles FAQ par Catégorie --- */
+.faqCategory { margin-top: calc(var(--spacing-unit) * 4); }
+.faqCategory:first-child { margin-top: calc(var(--spacing-unit) * 2); }
+.faqCategoryTitle {
+  font-size: 1.3rem; color: var(--color-accent-gold); margin-bottom: calc(var(--spacing-unit) * 2);
+  padding-bottom: calc(var(--spacing-unit) * 1); border-bottom: 1px solid var(--color-border-light);
+}
+.faqItem { border-bottom: 1px solid var(--color-border-light); margin-bottom: var(--spacing-unit); padding-bottom: var(--spacing-unit); }
+.faqItem summary { cursor: pointer; font-weight: bold; padding: calc(var(--spacing-unit) * 1) 0; position: relative; display: list-item; /* Pour la flèche par défaut */}
+.faqItem summary:hover { color: var(--color-accent-gold); }
+.faqItem p { padding: calc(var(--spacing-unit) * 1) 0 0 calc(var(--spacing-unit) * 2); margin-bottom: 0; }
+
+
+/* --- Styles Communs / Notes / Liens --- */
+.note { /* Note générale */
+  font-size: 0.9rem; color: var(--color-text-secondary); display: block;
   margin-top: calc(var(--spacing-unit) * 1);
 }
+.internalLink, .externalLink {
+  text-decoration: underline; text-decoration-color: var(--color-accent-gold);
+  text-underline-offset: 2px; color: var(--color-accent-gold); /* Rendre les liens plus visibles */
+}
+.internalLink:hover, .externalLink:hover {
+  color: var(--foreground); /* Changer la couleur du texte au survol */
+  text-decoration-color: var(--foreground);
+}
+.note a { /* Liens dans les notes */
+    text-decoration: underline; text-decoration-color: var(--color-accent-gold);
+    text-underline-offset: 2px; color: var(--color-text-secondary);
+}
+.note a:hover { color: var(--color-accent-gold); }
 
-/* Style de base pour l'accordéon FAQ natif */
-.faqItem {
-  border-bottom: 1px solid var(--color-border-light);
-  margin-bottom: var(--spacing-unit);
-  padding-bottom: var(--spacing-unit);
-}
-
-.faqItem summary {
-  cursor: pointer;
-  font-weight: bold;
-  padding: calc(var(--spacing-unit) * 1) 0;
-  position: relative; /* Pour le marqueur potentiel */
-  /* On pourrait ajouter un marqueur +/- via ::before ou ::after */
-}
-
-.faqItem summary:hover {
-   color: var(--color-accent-gold); /* Feedback au survol */
-}
-
-.faqItem p { /* Style du contenu de la réponse */
-   padding: calc(var(--spacing-unit) * 1) 0 0 calc(var(--spacing-unit) * 2); /* Léger retrait */
-   margin-bottom: 0; /* Enlever la marge par défaut du <p> dans la FAQ */
-}
-
-.faqCategory {
-  margin-top: calc(var(--spacing-unit) * 4); /* Espace entre les catégories */
-}
-.faqCategory:first-child {
-    margin-top: calc(var(--spacing-unit) * 2); /* Moins d'espace avant la première catégorie */
-}
-
-.faqCategoryTitle {
-  /* Style pour les titres H3 des catégories */
-  font-size: 1.3rem; /* Un peu plus grand que les H4 */
-  color: var(--color-accent-gold); /* Couleur accentuée */
-  margin-bottom: calc(var(--spacing-unit) * 2);
-  padding-bottom: calc(var(--spacing-unit) * 1);
-  border-bottom: 1px solid var(--color-border-light); /* Soulignement léger */
-}
-
-/* Style pour les listes imbriquées (ex: Etapes) */
-.nestedList {
-   margin-top: calc(var(--spacing-unit) * 1);
-   margin-bottom: calc(var(--spacing-unit) * 1);
-   /* padding-left: calc(var(--spacing-unit) * 2); Pas nécessaire car ul/li ont déjà un padding */
-}
-
-/* Style pour les icônes texte (simples) */
-.iconCheck {
-  color: var(--color-success);
-  margin-right: var(--spacing-unit);
-  display: inline-block; /* Pour l'alignement */
-}
-.iconCross {
-   color: var(--color-error);
-   margin-right: var(--spacing-unit);
-   display: inline-block;
-}
-
-/* Optionnel: Style pour mettre en évidence le départ hors France */
-.highlightBox {
-  background-color: #fffbe6; /* Jaune très pâle */
-  border: 1px solid #ffe58f; /* Bordure dorée pâle */
-  border-left-width: 4px;
-  padding: calc(var(--spacing-unit) * 2);
-  margin: calc(var(--spacing-unit) * 3) 0;
-  border-radius: 4px;
-}
-html.dark .highlightBox {
-   background-color: #3b322f; /* Fond sombre adapté */
-   border-color: var(--color-accent-gold);
-}
-.highlightBox h3 {
-   margin-top: 0;
-   font-size: 1.2em; /* Ajuster taille titre */
-}
-
-/* Conteneur pour les éléments d'accordéon */
-.accordionContainer {
-    margin-top: calc(var(--spacing-unit) * 2);
-    border: 1px solid var(--color-border-light); /* Optionnel: encadrer l'accordéon */
-    border-radius: 6px;
-    overflow: hidden; /* Pour les coins arrondis */
-}
-
-/* Style pour chaque item <details> */
-.accordionItem {
-  border-bottom: 1px solid var(--color-border-light);
-}
-.accordionItem:last-child {
-  border-bottom: none; /* Pas de bordure pour le dernier */
-}
-
-/* Style pour le titre <summary> */
-.accordionTitle {
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.1rem; /* Un peu plus grand */
-  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
-  background-color: var(--background); /* Même fond que la page */
-  transition: background-color 0.2s ease;
-  display: list-item; /* Assure l'affichage du marqueur flèche */
-  list-style: none; /* Masquer la flèche par défaut si on en met une custom */
-  position: relative; /* Pour la flèche custom */
-  padding-left: calc(var(--spacing-unit) * 4); /* Espace pour la flèche custom */
-}
-
-/* Ajouter une flèche custom (optionnel) */
-.accordionTitle::before {
-    content: '▶'; /* Flèche simple */
-    position: absolute;
-    left: calc(var(--spacing-unit) * 1.5);
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
-    transition: transform 0.2s ease;
-    font-size: 0.8em;
-    color: var(--color-text-secondary);
-}
-/* Rotation de la flèche quand l'accordéon est ouvert */
-.accordionItem[open] > .accordionTitle::before {
-    transform: translateY(-50%) rotate(90deg);
-}
-
-
-.accordionTitle:hover {
-   background-color: #f9f9f9; /* Léger fond au survol */
-   color: var(--color-accent-gold);
-}
-html.dark .accordionTitle:hover {
-    background-color: #1a1a1a;
-}
-
-/* Style pour le contenu <div> à l'intérieur de <details> */
-.accordionContent {
-  padding: calc(var(--spacing-unit) * 2);
-  padding-top: var(--spacing-unit); /* Moins d'espace en haut */
-  background-color: #fafafa; /* Fond légèrement différent pour le contenu */
-}
-html.dark .accordionContent {
-   background-color: #111111;
-}
-.accordionContent ul { /* S'assurer que les listes internes sont bien stylées */
-  margin-bottom: 0; /* Enlever marge basse de la liste dans l'accordéon */
-}
-
-/* Style pour le conseil final */
-.finalAdviceBox {
-    margin-top: calc(var(--spacing-unit) * 3);
-    border-top: 1px dashed var(--color-border-light);
-    padding-top: calc(var(--spacing-unit) * 2);
-}
-.finalAdviceBox h4 {
-    margin-top: 0;
-    color: var(--color-accent-gold);
-}
-
-/* --- AJOUT POUR PAGE.TSX CORRIGÉ --- */
-/* Style pour les notes utilisées directement dans le JSX (si on garde cette approche) */
-.note {
-    font-style: italic;
-    font-size: 0.9em;
-    color: var(--color-text-secondary);
-    display: inline; /* Ou block selon le rendu souhaité */
-}
+.nestedList { margin-top: calc(var(--spacing-unit) * 1); margin-bottom: calc(var(--spacing-unit) * 1); padding-left: calc(var(--spacing-unit) * 3); }
+.nestedList li { margin-bottom: calc(var(--spacing-unit)); }

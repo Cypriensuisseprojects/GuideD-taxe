@@ -171,7 +171,7 @@
   display: block; /* Empêche les espaces sous l'image */
   width: 24px;    /* Taille fixe */
   height: auto;   /* Maintient le ratio */
-  border-radius: 2px; /* Coins arrondis pour l'image */
+  border-radius: 3px; /* Coins arrondis pour l'image */
   /* Optionnel : très légère bordure pour délimiter les drapeaux clairs sur fond clair */
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
 }

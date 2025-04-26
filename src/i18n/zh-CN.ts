@@ -109,10 +109,10 @@ export default {
       documents_titre: "准备好您的文件：",
       // --- VERIFICATION: Array de strings ---
       documents_liste: [
-         "您的护照",
-         "您所有的退税单（Sézane/Global Blue 及其他）",
-         "您的交通票据",
-         "**购买的商品：**请放在易于取用的地方（手提行李），保持**未使用的新品**状态。",
+        "您的护照",
+        "您所有的退税单（Sézane/Global Blue 及其他）",
+        "您的交通票据",
+        "**购买的商品：**请放在易于取用的地方（手提行李），保持**未使用的新品**状态。",
       ],
       // --- FIN VERIFICATION ---
       validation_titre: "寻找海关 / PABLO 自助退税终端：",
@@ -153,10 +153,10 @@ export default {
       eurostar: "**巴黎 - Gare du Nord（前往伦敦的欧洲之星）：** 在护照/安检前设有专门的退税区。请预留时间。",
     },
     frontieres_routieres: {
-        titre: "🚗 公路边境（尤其是往瑞士方向）",
-        intro: "如果您驾车离开法国。",
-        suisse: "**往瑞士方向：** 主要过境点（如日内瓦附近；La Ferrière）设有法国海关。请查询退税服务和开放时间。",
-        autres_pays: "**往其他非欧盟国家（安道尔...）：** 请在离境点咨询海关。",
+      titre: "🚗 公路边境（尤其是往瑞士方向）",
+      intro: "如果您驾车离开法国。",
+      suisse: "**往瑞士方向：** 主要过境点（如日内瓦附近；La Ferrière）设有法国海关。请查询退税服务和开放时间。",
+      autres_pays: "**往其他非欧盟国家（安道尔...）：** 请在离境点咨询海关。",
     },
     ports: {
       titre: "🚢 海港（渡轮）",
@@ -169,7 +169,7 @@ export default {
     }
   },
 
-   // --- SECTION FAQ ---
+  // --- SECTION FAQ ---
   faq: {
     titre: "常见问题解答 (FAQ)",
     intro: "在此查找最常见问题的答案。",
@@ -206,9 +206,9 @@ export default {
   },
 
   // --- DISCLAIMER ---
-   disclaimer: {
-     titre: "法律声明与免責声明",
-     texte: "本信息仅供参考，基于官方文件 ([lien douane.gouv.fr]) 和 Global Blue 实践 ([lien globalblue.com])，更新日期 [Date MAJ Site]。规定可能变更。请务必核实官方来源。Sézane 对过时信息或退税被拒不承担责任。"
-   },
+  disclaimer: {
+    titre: "法律声明与免責声明",
+    texte: "本信息仅供参考，基于官方文件 ([lien douane.gouv.fr]) 和 Global Blue 实践 ([lien globalblue.com])，更新日期 [Date MAJ Site]。规定可能变更。请务必核实官方来源。Sézane 对过时信息或退税被拒不承担责任。"
+  },
 
 } as const; // Important for type-safety

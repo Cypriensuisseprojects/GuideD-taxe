@@ -107,14 +107,14 @@ export default {
       temps_titre: "Planen Sie ZEIT ein!",
       temps_texte: "Dieser Schritt ist entscheidend (mind. 30-60 Min. extra vor dem Check-in).",
       documents_titre: "Sammeln Sie Ihre Dokumente:",
-       // --- VÉRIFICATION : Tableau de strings ---
+      // --- VÉRIFICATION : Tableau de strings ---
       documents_liste: [
-         "Ihren Reisepass",
-         "Alle Ihre Tax Free Formulare (Sézane/Global Blue etc.)",
-         "Ihre Reisetickets",
-         "**Die gekauften Artikel:** Halten Sie sie griffbereit (Handgepäck), **neu, unbenutzt**.",
+        "Ihren Reisepass",
+        "Alle Ihre Tax Free Formulare (Sézane/Global Blue etc.)",
+        "Ihre Reisetickets",
+        "**Die gekauften Artikel:** Halten Sie sie griffbereit (Handgepäck), **neu, unbenutzt**.",
       ],
-       // --- FIN VÉRIFICATION ---
+      // --- FIN VÉRIFICATION ---
       validation_titre: "Finden Sie den Zoll / PABLO-Terminals:",
       validation_moment: "Gehen Sie zum Tax-Refund-Bereich **BEVOR Sie Ihr Gepäck aufgeben**.",
       validation_borne: "Suchen Sie die elektronischen **\"PABLO\"-Terminals**. Siehe unseren [Abschnitt Wo validieren?](#ou-valider).", // Lien interne
@@ -153,10 +153,10 @@ export default {
       eurostar: "**Paris - Gare du Nord (Eurostar nach London):** Eigener Tax-Refund-Bereich VOR Pass-/Sicherheitskontrolle. Planen Sie Zeit ein.",
     },
     frontieres_routieres: {
-        titre: "🚗 Straßengrenzen (insb. zur Schweiz)",
-        intro: "Wenn Sie Frankreich per Auto verlassen.",
-        suisse: "**Zur Schweiz:** Französische Zollämter an Hauptübergängen (z.B. bei Genf; La Ferrière). Prüfen Sie Tax-Free-Service und Öffnungszeiten.",
-        autres_pays: "**Zu anderen Nicht-EU-Ländern (Andorra...):** Informieren Sie sich über Zollämter am Übergang.",
+      titre: "🚗 Straßengrenzen (insb. zur Schweiz)",
+      intro: "Wenn Sie Frankreich per Auto verlassen.",
+      suisse: "**Zur Schweiz:** Französische Zollämter an Hauptübergängen (z.B. bei Genf; La Ferrière). Prüfen Sie Tax-Free-Service und Öffnungszeiten.",
+      autres_pays: "**Zu anderen Nicht-EU-Ländern (Andorra...):** Informieren Sie sich über Zollämter am Übergang.",
     },
     ports: {
       titre: "🚢 Seehäfen (Fähre)",
@@ -169,7 +169,7 @@ export default {
     }
   },
 
-   // --- SECTION FAQ ---
+  // --- SECTION FAQ ---
   faq: {
     titre: "Häufig gestellte Fragen (FAQ)",
     intro: "Finden Sie hier Antworten auf die häufigsten Fragen.",
@@ -206,9 +206,9 @@ export default {
   },
 
   // --- DISCLAIMER ---
-   disclaimer: {
-     titre: "Impressum & Haftungsausschluss",
-     texte: "Diese Informationen dienen nur zur Orientierung, basierend auf offiziellen Texten ([lien douane.gouv.fr]) und Global Blue Praktiken ([lien globalblue.com]), Stand [Date MAJ Site]. Regeln können sich ändern. Überprüfen Sie immer offizielle Quellen. Sézane haftet nicht für veraltete Infos oder Ablehnung."
-   },
+  disclaimer: {
+    titre: "Impressum & Haftungsausschluss",
+    texte: "Diese Informationen dienen nur zur Orientierung, basierend auf offiziellen Texten ([lien douane.gouv.fr]) und Global Blue Praktiken ([lien globalblue.com]), Stand [Date MAJ Site]. Regeln können sich ändern. Überprüfen Sie immer offizielle Quellen. Sézane haftet nicht für veraltete Infos oder Ablehnung."
+  },
 
 } as const; // Important for type-safety

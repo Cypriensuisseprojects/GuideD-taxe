@@ -85,7 +85,7 @@ const Header = () => {
       <nav className={styles.nav}>
         <Link href={`/${currentLocale}/#eligibilite`}>{t('header.eligibility')}</Link>
         <Link href={`/${currentLocale}/#etapes`}>{t('header.steps')}</Link>
-        <Link href={`/${currentLocale}/#carte`}>{t('header.map')}</Link>
+        <Link href={`/${currentLocale}/#ou-valider`}>{t('header.map')}</Link>
         <Link href={`/${currentLocale}/#faq`}>{t('header.faq')}</Link>
       </nav>
 

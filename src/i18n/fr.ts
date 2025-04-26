@@ -1,4 +1,4 @@
-// src/i18n/fr.ts (Version Complète avec <strong> au lieu de **)
+// src/i18n/fr.ts (Version Simplifiée - Sans <strong>)
 export default {
   // --- META DONNEES ---
   metadata: {
@@ -10,10 +10,10 @@ export default {
   header: {
     logo_title: 'Guide Détaxe Sézane',
     logo_subtitle: 'Récupérez la TVA sur vos achats',
-    eligibility: 'Éligibilité', // Garder simple pour la nav
-    steps: 'Étapes',       // Garder simple pour la nav
-    map: 'Où valider ?',   // Garder simple pour la nav
-    faq: 'FAQ',            // Garder simple pour la nav
+    eligibility: 'Qui & Quoi ?', // Plus court
+    steps: 'Comment ?',
+    map: 'Où ?', // Plus court
+    faq: 'FAQ',
     theme_toggle_aria: 'Changer vers le thème {theme}',
     theme_light: 'clair',
     theme_dark: 'sombre',
@@ -32,194 +32,197 @@ export default {
   // --- ACCUEIL ---
   accueil: {
     col1_titre: "La détaxe ? C'est simple !",
-    col1_texte: "Lorsque vous faites du shopping en France (chez Sézane par exemple !) pendant votre voyage, vous payez une taxe appelée TVA. Si vous habitez hors de l'Union Européenne, vous pouvez récupérer une partie de cette taxe après votre départ. C'est un avantage spécialement pensé pour les voyageurs comme vous !",
+    col1_texte: "En achetant chez Sézane en France, vous payez la TVA. Si vous vivez hors UE, récupérez une partie de cette taxe après votre départ. C'est un avantage pour les voyageurs !", // Simplifié
     col2_titre: "Comment ça marche ?",
     lien_nav_1_titre: "Qui et Quoi ?",
-    lien_nav_1_texte: "Conditions et achats concernés.",
+    lien_nav_1_texte: "Vérifiez si vous et vos achats êtes concernés.", // Simplifié
     lien_nav_2_titre: "Comment ?",
-    lien_nav_2_texte: "Les étapes clés (achat, validation, remboursement).",
+    lien_nav_2_texte: "Suivez les étapes clés.", // Simplifié
     lien_nav_3_titre: "Où ?",
-    lien_nav_3_texte: "Trouver les points de validation.",
+    lien_nav_3_texte: "Trouvez les points de validation.",
     lien_nav_4_titre: "FAQ :",
-    lien_nav_4_texte: "Réponses aux questions fréquentes.",
-    note_langue: "(Note : Vous pouvez changer de langue à tout moment grâce au sélecteur.)",
+    lien_nav_4_texte: "Nos réponses à vos questions.", // Simplifié
+    note_langue: "(Note : Vous pouvez changer de langue à tout moment.)", // Simplifié
   },
 
-  // --- SECTION ELIGIBILITE ---
+  // --- SECTION ELIGIBILITE (TEXTES SIMPLIFIÉS, SANS <strong>) ---
   eligibilite: {
-    titre: "Qui peut en profiter et pour quels achats ?", // Titre de section pour la page
-    intro: "Pour pouvoir bénéficier du remboursement de la TVA sur vos achats, vous devez remplir <strong>toutes</strong> les conditions suivantes :", // Utilisation de <strong>
+    titre: "Suis-je concerné(e) par la détaxe ?", // Nouveau titre H2
+    intro: "Vérifiez si vous remplissez ces 4 conditions :", // Intro courte
+
+    voyageur_titre: "1. Conditions sur Vous (Le Voyageur)", // Sous-titre H3
     residence: {
-      titre: "1. Votre Résidence :",
-      condition: "✅ Vous devez avoir votre résidence habituelle <strong>hors de l'Union Européenne</strong> (et hors de certains territoires spécifiques comme les DOM, Monaco, etc.) à la date des achats.", // Utilisation de <strong>
-      note: "Info Pratique : Les résidents du Royaume-Uni (hors Irlande du Nord), de Suisse, de Norvège sont éligibles.",
+      // titre: "Votre Résidence", // Optionnel
+      // MOTS CLÉS: hors Union Européenne
+      condition: "✅ Votre résidence principale : hors Union Européenne.", // Texte simplifié
+      note: "(Résidents UK (hors Irlande N.), CH, NO : OK. Résidents Monaco, DOM : NON).", // Note concise
     },
     sejour: {
-      titre: "2. Votre Séjour :",
-      condition: "✅ Vous devez être de passage en France (ou dans l'UE) pour <strong>moins de 6 mois</strong>.", // Utilisation de <strong>
+      // titre: "Votre Séjour",
+      // MOTS CLÉS: moins de 6 mois
+      condition: "✅ Votre séjour en France / UE : moins de 6 mois.", // Texte simplifié
     },
     age: {
-      titre: "3. Votre Âge :",
-      condition: "✅ Vous devez avoir <strong>16 ans révolus</strong> au moment de l'achat.", // Utilisation de <strong>
+      // titre: "Votre Âge",
+      // MOTS CLÉS: 16 ans ou plus
+      condition: "✅ Votre âge le jour de l'achat : 16 ans ou plus.", // Texte simplifié
     },
-    achats: {
-      titre: "4. Vos Achats :",
-      condition_montant: "✅ Le montant total de vos achats, <strong>TTC (Toutes Taxes Comprises)</strong>, doit être <strong>supérieur à 100,00 €</strong> (soit 100.01€ ou plus).", // Utilisation de <strong>
-      condition_sezane: "<strong>Chez Sézane :</strong> Ce montant doit être atteint <strong>dans la même journée</strong> dans l'une de nos boutiques.", // Utilisation de <strong>
-      note_cumul: "(Note: Pour simplifier chez Sézane, visez 100.01€ le même jour).",
-      condition_usage: "✅ Les achats doivent être des <strong>ventes au détail</strong> pour un <strong>usage personnel</strong> (vous les emportez dans vos bagages).", // Utilisation de <strong>
+
+    achats_titre: "2. Conditions sur Vos Achats Sézane", // Sous-titre H3
+    montant: {
+      // titre: "Montant Minimum",
+      // MOTS CLÉS: plus de 100€
+      condition: "✅ Total TTC le même jour : plus de 100€.", // Texte simplifié
+      note_sezane: "(Ce montant doit être atteint chez Sézane le même jour).",
+    },
+    usage: {
+      // titre: "Usage des Biens",
+      // MOTS CLÉS: Personnel
+      condition: "✅ Usage : Personnel (vous rapportez les articles).", // Texte simplifié
     },
     produits: {
-      titre: "Quels produits sont concernés ?",
-      eligibles: "La plupart des articles Sézane (vêtements, maroquinerie, chaussures, accessoires) sont éligibles.",
-      exclus_titre: "Attention, certains biens sont EXCLUS de la détaxe de manière générale :",
-      exclus_liste: [ // Tableau vérifié
-        "❌ Tabacs manufacturés",
-        "❌ Services (réparations, transport, hébergement, etc.)",
-        "❌ Biens soumis à embargo",
-        "❌ Armes (Catégories A et B)",
-        "❌ Biens culturels dépassant certains seuils",
-        "❌ Produits consommés sur place",
-      ],
-      lien_douanes_texte: "Pour une liste exhaustive, consultez le site officiel des Douanes Françaises", // Clé renommée
+      titre: "Quels produits sont éligibles ?", // Titre H4
+      eligibles: "Bonne nouvelle ! La majorité de nos articles Sézane donne droit à la détaxe.", // Simplifié
+      exclus_titre: "Attention, sont toujours exclus :", // Titre H5 ou P
+      exclus_1: "❌ Services (hôtel, transport...)", // Icône incluse ici
+      exclus_2: "❌ Biens soumis à embargo",
+      exclus_3: "❌ Produits consommés en France",
+      lien_douanes_texte: "Détails et autres exclusions sur douane.gouv.fr", // Texte simplifié pour le lien
     }
   },
 
-  // --- SECTION ETAPES ---
+  // --- SECTION ETAPES (TEXTES SIMPLIFIÉS, SANS <strong>) ---
   etapes: {
-    titre: "Comment faire ? Les étapes simples", // Titre de section pour la page
-    intro: "Suivez ces étapes simples pour obtenir votre remboursement de TVA.",
+    titre: "Comment faire ? Les étapes simples",
+    intro: "Suivez ces étapes pour obtenir votre remboursement.",
     etape1: {
-      titre: "Étape 1 : Lors de votre Achat (Le plus important !)",
+      titre: "Étape 1 : Lors de l'Achat (Le plus important !)",
       paiement_titre: "Au moment de payer :",
-      paiement_sezane: "<strong>Chez Sézane :</strong> Informez nos équipes en caisse que vous souhaitez bénéficier de la détaxe.", // Utilisation de <strong>
-      paiement_passeport: "<strong>Présentez votre passeport ORIGINAL</strong> (une copie ou photo ne suffit généralement pas).", // Utilisation de <strong>
-      bve_titre: "Demandez le Bordereau de Vente à l'Exportation (BVE) :",
-      bve_sezane: "<strong>Chez Sézane :</strong> Nous travaillons avec <strong>Global Blue</strong>. Nos équipes éditeront directement le formulaire.", // Utilisation de <strong>
-      bve_verifier: "<strong>Vérifiez les informations</strong> sur le bordereau avant de partir (Nom, Pays, N° Passeport).", // Utilisation de <strong>
-      bve_garder: "<strong>Gardez précieusement</strong> le bordereau fourni.", // Utilisation de <strong>
+      paiement_sezane: "Chez Sézane : Demandez la détaxe à nos équipes.", // Simplifié
+      paiement_passeport: "Présentez votre passeport ORIGINAL (pas de copie).", // Simplifié
+      bve_titre: "Demandez le formulaire de détaxe :", // Simplifié
+      bve_sezane: "Chez Sézane : Nous utilisons Global Blue, nos équipes éditent le formulaire.", // Simplifié
+      bve_verifier: "Vérifiez vos infos (Nom, Pays, Passeport) sur le formulaire.", // Simplifié
+      bve_garder: "Gardez ce formulaire précieusement.", // Simplifié
     },
     etape2: {
-      titre: "Étape 2 : Avant de Quitter l'Union Européenne (Aéroport / Gare / Frontière)",
+      titre: "Étape 2 : Avant de Quitter l'UE (Départ)", // Simplifié
       temps_titre: "Prévoyez du TEMPS !",
-      temps_texte: "Cette étape est cruciale (min. 30-60 minutes supplémentaires avant l'enregistrement).",
+      temps_texte: "Indispensable ! Prévoyez 30-60 min de plus avant l'enregistrement.", // Simplifié
       documents_titre: "Rassemblez vos documents :",
-      documents_liste: [ // Tableau vérifié
-         "Votre passeport",
-         "Tous vos bordereaux de détaxe (Sézane/Global Blue et autres)",
-         "Vos billets de transport",
-         // Utiliser <strong> pour le texte DANS le tableau
-         "<strong>Les articles achetés :</strong> Gardez-les accessibles (bagage cabine idéalement), <strong>neufs, non utilisés</strong>.",
-      ],
-      validation_titre: "Trouvez la Douane / Bornes PABLO :",
-      validation_moment: "Dirigez-vous vers la zone de détaxe <strong>AVANT d'enregistrer vos bagages</strong>.", // Utilisation de <strong>
-      validation_borne: "Repérez les bornes électroniques <strong>\"PABLO\"</strong>. Voir notre [section Où Valider ?](#ou-valider).", // Lien interne + strong
-      validation_action: "Validez votre bordereau :",
-      validation_scan: "Scannez le code-barres de votre bordereau Sézane/Global Blue.",
-      validation_ok: "✅ <strong>Écran Vert \"OK Bordereau Validé\" :</strong> Parfait ! Votre détaxe est validée.", // Utilisation de <strong>
-      validation_ko: "❌ <strong>Écran Rouge / Erreur / Pas de borne :</strong> Allez impérativement au <strong>guichet des Douanes</strong> avec documents ET marchandises. <strong>Ne partez pas sans validation !</strong>", // Utilisation de <strong>
+      doc_1: " Passeport", // Ajouter un emoji ou une puce si désiré
+      doc_2: " Tous vos formulaires de détaxe",
+      doc_3: " Billets de transport",
+      doc_4: " Articles achetés (accessibles, neufs, non utilisés)",
+      validation_titre: "Trouvez Douane / Bornes PABLO :",
+      validation_moment: "Allez à la zone détaxe AVANT d'enregistrer vos bagages.", // Simplifié
+      // Garder le marqueur lien
+      validation_borne: "Repérez les bornes \"PABLO\". Voir notre [section Où Valider ?](#ou-valider).",
+      validation_action: "Validez votre formulaire :",
+      validation_scan: "Scannez le code-barres du formulaire Sézane/Global Blue.",
+      validation_ok: "✅ Écran Vert \"OK Validé\" : Parfait ! Votre détaxe est validée.", // Simplifié
+      validation_ko: "❌ Écran Rouge / Erreur / Pas de borne : Allez au guichet Douanes avec documents ET articles. NE PARTEZ PAS SANS VALIDATION !", // Simplifié + Emphase texte
     },
     etape3: {
-      titre: "Étape 3 : Obtenir Votre Remboursement (Après validation douanière)",
-      intro: "Une fois votre bordereau <strong>validé par la douane</strong>, vous pouvez obtenir votre remboursement.", // Utilisation de <strong>
-      moyen_titre: "Comment ? (Via Global Blue pour vos achats Sézane) :",
-      moyen_cb: "<strong>Remboursement sur Carte Bancaire (Recommandé) :</strong> Global Blue créditera la carte enregistrée. Délai : env. 5 jours à 3 semaines.", // Utilisation de <strong>
-      moyen_cash: "<strong>Remboursement en Espèces (Cash) à l'aéroport :</strong> Rendez-vous à un guichet partenaire Global Blue (ex: Travelex) <strong>APRÈS</strong> la douane. Attention : frais possibles.", // Utilisation de <strong>
+      titre: "Étape 3 : Obtenir le Remboursement (Après validation)", // Simplifié
+      intro: "Une fois le formulaire validé par la douane, demandez le remboursement.", // Simplifié
+      moyen_titre: "Comment ? (Via Global Blue pour Sézane) :",
+      moyen_cb: "Carte Bancaire (Recommandé) : Automatique sur la carte enregistrée. Délai : 5j - 3sem env.", // Simplifié
+      moyen_cash: "Espèces (Cash) à l'aéroport : Allez à un guichet partenaire Global Blue APRÈS la douane (frais possibles).", // Simplifié
       montant_titre: "Quel Montant ?",
-      montant_texte: "Vous ne récupérez pas 100% de la TVA. Global Blue applique des frais. Le montant est indiqué sur votre bordereau (env. 10-12% du prix TTC).",
-      fin: "Félicitations, vous avez terminé !",
+      montant_texte: "Pas 100% de la TVA. Global Blue prend des frais. Environ 10-12% du prix TTC (voir formulaire).", // Simplifié
+      fin: "Félicitations, c'est terminé !", // Simplifié
     }
   },
 
-  // --- SECTION OU VALIDER ---
+  // --- SECTION OU VALIDER (TEXTES SIMPLIFIÉS, SANS <strong>) ---
   ou_valider: {
-    titre: "Où Faire Valider votre Bordereau de Détaxe ?",
-    intro: "La validation de votre bordereau par les douanes est <strong>l'étape indispensable</strong> avant de pouvoir être remboursé. Elle doit être faite <strong>avant de quitter définitivement l'Union Européenne</strong>.", // Utilisation de <strong>
+    titre: "Où Faire Valider votre Formulaire ?", // Simplifié
+    intro: "La validation douanière est indispensable avant remboursement. À faire avant de quitter l'UE.", // Simplifié
     depart_hors_france: {
-       titre: "🇪🇺 Départ depuis un autre pays de l'UE ?",
-       texte: "Si votre <strong>dernier point de sortie de l'Union Européenne n'est PAS la France</strong> (par exemple, vol Paris -> Francfort -> New York), vous devez faire valider votre bordereau français par les <strong>douanes du pays de départ de l'UE</strong> (l'Allemagne ici). Les bornes PABLO françaises ne fonctionneront pas. Renseignez-vous sur la procédure de détaxe de ce pays.", // Utilisation de <strong>
+      titre: "🇪🇺 Départ depuis un autre pays de l'UE ?",
+      texte: "Si votre dernier point de sortie UE n'est PAS la France (ex: vol Paris > Francfort > NY), faites valider par les douanes de ce pays (Allemagne ici). Les bornes PABLO ne marcheront pas.", // Simplifié
     },
     depart_france: {
-        titre: "🇫🇷 Départ depuis la France (le cas le plus courant)",
-        intro: "Si vous quittez directement l'UE depuis la France, voici où trouver les services de validation (bornes PABLO ou guichets douane) :",
-        comment_trouver: "Recherchez la signalétique \"Détaxe / Tax Refund / Customs\". La validation se fait <strong>avant l'enregistrement des bagages</strong> si vous prenez l'avion.", // Utilisation de <strong>
+      titre: "🇫🇷 Départ depuis la France", // Simplifié
+      intro: "Si vous quittez l'UE depuis la France, voici où valider :",
+      comment_trouver: "Cherchez \"Détaxe / Tax Refund / Customs\". Validez avant l'enregistrement des bagages (avion).", // Simplifié
     },
     aeroports: {
       titre: "✈️ Aéroports",
-      cdg: "<strong>Paris-Charles de Gaulle (CDG) :</strong> Bornes PABLO et/ou guichets dans les principaux terminaux (T1, T2A, T2C, T2D, T2E, T2F, T3). Suivez la signalétique.", // Utilisation de <strong>
-      ory: "<strong>Paris-Orly (ORY) :</strong> Bornes PABLO et/ou guichets dans les terminaux Orly 1-2-3 et Orly 4.", // Utilisation de <strong>
-      gva_fr: "<strong>Aéroport de Genève (GVA) - Secteur France :</strong> Si vol depuis secteur français vers hors UE, utilisez les services de détaxe français (guichet).", // Utilisation de <strong>
-      autres: "<strong>Autres aéroports internationaux (Nice, Lyon, Marseille...) :</strong> Services généralement disponibles. Vérifiez sur place.", // Utilisation de <strong>
+      cdg: "Paris-CDG : Bornes PABLO / guichets dans les terminaux (T1, T2A/C/D/E/F, T3). Suivez la signalétique.", // Simplifié
+      ory: "Paris-Orly : Bornes PABLO / guichets (Orly 1-2-3, Orly 4).", // Simplifié
+      gva_fr: "Aéroport Genève (GVA) - Secteur France : Guichet français dispo si vol hors UE depuis secteur FR.", // Simplifié
+      autres: "Autres aéroports (Nice, Lyon, Marseille...) : Services souvent disponibles. Vérifiez.", // Simplifié
     },
     gares: {
       titre: "🚆 Gares Internationales",
-      eurostar: "<strong>Paris - Gare du Nord (Eurostar vers Londres) :</strong> Zone de détaxe dédiée AVANT les contrôles. Prévoyez du temps.", // Utilisation de <strong>
-      geneve_cornavin: "<strong>Gare de Genève Cornavin (Suisse) :</strong> Guichet/borne PABLO français présent pour voyageurs TGV continuant hors UE. Renseignez-vous.", // Utilisation de <strong>
+      eurostar: "Paris - Gare du Nord (Eurostar) : Zone détaxe dédiée AVANT contrôles. Prévoyez du temps.", // Simplifié
+      geneve_cornavin: "Gare Genève Cornavin (Suisse) : Guichet/borne PABLO français pour voyageurs TGV. Renseignez-vous.", // Simplifié
     },
     frontieres_routieres: {
       titre: "🚗 Frontières Routières",
-      suisse: "<strong>Vers la Suisse :</strong> Postes douane français aux points principaux (ex: Vallard-Thonex...). Vérifiez service détaxe et horaires.", // Utilisation de <strong>
-      autres_pays: "<strong>Vers autres pays hors UE (Andorre...) :</strong> Renseignez-vous au poste frontière.", // Utilisation de <strong>
+      suisse: "Vers la Suisse : Postes douane français aux points principaux (Vallard-Thonex...). Vérifiez service et horaires.", // Simplifié
+      autres_pays: "Vers autres pays hors UE : Renseignez-vous au poste frontière.",
     },
     ports: {
       titre: "🚢 Ports Maritimes (Ferry)",
-      exemples: "Services (bornes ou guichets) dans terminaux passagers des grands ports (Calais, Dunkerque...).",
+      exemples: "Services dans terminaux passagers des grands ports (Calais, Dunkerque...).",
     },
     conseil_final: {
       titre: "Conseil Important !",
-      texte: "Les emplacements et horaires peuvent varier. Vérifiez toujours les informations officielles (site aéroport/gare, douane.gouv.fr) avant votre voyage et prévoyez du temps supplémentaire !",
+      texte: "Emplacements et horaires variables. Vérifiez toujours infos officielles (aéroport, douane.gouv.fr) avant et prévoyez du temps !", // Simplifié
     }
   },
 
-   // --- SECTION FAQ (Structure simple qX_q / qX_a gardée) ---
+  // --- SECTION FAQ (TEXTES SIMPLIFIÉS, SANS <strong>) ---
   faq: {
     titre: "Questions Fréquentes (FAQ)",
-    intro: "Trouvez ici les réponses aux questions les plus courantes.",
-    categories: { // Garder les titres de catégorie pour le rendu JSX
-        eligibility: "Éligibilité",
-        purchase: "Achat & Formulaire",
-        departure: "Départ & Validation",
-        refund: "Remboursement",
-        problems: "Problèmes & Cas Particuliers",
+    intro: "Nos réponses à vos questions courantes.", // Simplifié
+    categories: { // Garder les titres
+      eligibility: "Éligibilité",
+      purchase: "Achat & Formulaire",
+      departure: "Départ & Validation",
+      refund: "Remboursement",
+      problems: "Problèmes & Cas Particuliers",
     },
-    // Questions/Réponses (sans balises <strong> ici, sauf si vraiment nécessaire)
-    q1_q: "Q1 : Suis-je éligible si je viens du Royaume-Uni après Brexit ?",
-    q1_a: "R : Oui, si vous résidez au Royaume-Uni (hors Irlande du Nord) ou Gibraltar/Îles Anglo-Normandes. Les résidents d'Irlande du Nord ne le sont pas. N'oubliez pas votre passeport.",
-    q2_q: "Q2 : Quel est le montant minimum chez Sézane ?",
-    q2_a: "R : 100.01 € TTC ou plus, le même jour, dans une même boutique Sézane.",
-    q3_q: "Q3 : Puis-je cumuler mes achats Sézane sur plusieurs jours ?",
-    q3_a: "R : Non, le seuil doit être atteint le même jour dans la même boutique.",
-    q4_q: "Q4 : Comment demander le formulaire en boutique Sézane ?",
-    q4_a: "R : Demandez en caisse avec votre passeport original. Nous éditerons un formulaire Global Blue.",
-    q5_q: "Q5 : Oubli de demander le formulaire, puis-je revenir ?",
-    q5_a: "R : Non, il doit être demandé au moment de l'achat.",
-    q6_q: "Q6 : Détaxe pour achat en ligne retiré en boutique ?",
-    q6_a: "R : Oui ! Si éligible, demandez le formulaire au retrait avec passeport (si montant > 100.01€).",
-    q7_q: "Q7 : Combien de temps prévoir à l'aéroport (CDG/Orly) ?",
-    q7_a: "R : Prévoyez LARGE ! Au moins 30-60 min de plus, AVANT l'enregistrement.",
-    q8_q: "Q8 : Où trouver les bornes PABLO / douanes à Paris ?",
-    q8_a: "R : Consultez notre [section Où Valider ?](#ou-valider). Ils sont indiqués dans les zones de départ.",
-    q9_q: "Q9 : Dois-je montrer mes articles Sézane ? Puis-je les porter ?",
-    q9_a: "R : Soyez prêt(e) à les montrer. Gardez-les neufs, non utilisés, accessibles. Ne les portez pas avant de quitter l'UE.",
-    q10_q: "Q10 : Que faire si la borne PABLO est en panne / écran rouge ?",
-    q10_a: "R : Allez immédiatement au guichet des Douanes avec passeport, formulaire papier et achats.",
-    q11_q: "Q11 : Comment Global Blue me rembourse (achats Sézane) ?",
-    q11_a: "R : Après validation douanière, par CB (recommandé, délai 5j-3sem) ou espèces (guichet partenaire, frais possibles).",
-    q12_q: "Q12 : Quel montant exact vais-je récupérer ?",
-    q12_a: "R : Pas 100% de la TVA. Global Blue prend des frais. Env. 10-12% du prix TTC (montant sur formulaire).",
-    q13_q: "Q13 : Délai de remboursement sur carte bancaire ?",
-    q13_a: "R : Généralement 5 jours ouvrés, mais peut prendre jusqu'à 3 semaines.",
-    q14_q: "Q14 : J'ai quitté la France sans valider, que faire ?",
-    q14_a: "R : Très rare. Uniquement si faute prouvée de la douane (panne/absence). Procédure Douanes sous 6 mois.",
-    q15_q: "Q15 : Mon formulaire a une date d'expiration ?",
-    q15_a: "R : Oui ! Validation avant fin du 3ème mois suivant le mois d'achat.",
+    // Q/R Simplifiées (sans strong, sauf si indispensable au sens)
+    q1_q: "Q1 : Éligible si je viens du Royaume-Uni ?",
+    q1_a: "R : Oui (sauf Irlande N.). Aussi Gibraltar/Îles Anglo-Normandes. Prenez votre passeport.",
+    q2_q: "Q2 : Montant minimum chez Sézane ?",
+    q2_a: "R : 100.01 € TTC ou plus, le même jour, même boutique.",
+    q3_q: "Q3 : Cumuler achats sur plusieurs jours ?",
+    q3_a: "R : Non, seuil à atteindre le même jour.",
+    q4_q: "Q4 : Demander le formulaire en boutique ?",
+    q4_a: "R : En caisse avec passeport original. On édite le formulaire Global Blue.",
+    q5_q: "Q5 : Oubli de demander le formulaire ?",
+    q5_a: "R : Trop tard. Doit être fait lors de l'achat.",
+    q6_q: "Q6 : Détaxe pour commande en ligne retirée en boutique ?",
+    q6_a: "R : Oui, si éligible. Demandez au retrait (passeport + montant > 100.01€).",
+    q7_q: "Q7 : Combien de temps prévoir à l'aéroport ?",
+    q7_a: "R : Beaucoup ! Min. 30-60 min de plus, AVANT enregistrement bagages.",
+    q8_q: "Q8 : Où sont les bornes PABLO / douanes à Paris ?",
+    q8_a: "R : Consultez la [section Où Valider ?](#ou-valider). Ils sont signalés en zone départ.", // Lien interne
+    q9_q: "Q9 : Montrer les articles ? Les porter avant ?",
+    q9_a: "R : Préparez-vous à les montrer. Gardez-les neufs, non utilisés, accessibles. Ne pas porter avant sortie UE.",
+    q10_q: "Q10 : Borne PABLO en panne / écran rouge ?",
+    q10_a: "R : Allez au guichet Douanes (avec tout : passeport, formulaire, articles).",
+    q11_q: "Q11 : Remboursement Global Blue (Sézane) ?",
+    q11_a: "R : Après validation douane : sur CB (recommandé, 5j-3sem) ou cash (guichet partenaire, frais possibles).",
+    q12_q: "Q12 : Montant exact remboursé ?",
+    q12_a: "R : Environ 10-12% du prix TTC (TVA moins frais Global Blue). Montant sur formulaire.",
+    q13_q: "Q13 : Délai remboursement CB ?",
+    q13_a: "R : Généralement 5j ouvrés après validation, parfois jusqu'à 3 semaines.",
+    q14_q: "Q14 : Parti sans valider, que faire ?",
+    q14_a: "R : Très difficile. Possible que si faute prouvée de la douane (panne/absence). Contacter Douanes sous 6 mois.",
+    q15_q: "Q15 : Date d'expiration du formulaire ?",
+    q15_a: "R : Oui ! Validation douanière avant fin 3ème mois suivant achat.",
   },
 
-  // --- DISCLAIMER ---
-   disclaimer: {
-     titre: "Mentions Légales & Avertissement",
-     // Texte simple, liens gérés dans JSX
-     texte: "Ces informations sont fournies à titre indicatif, basées sur les textes officiels ([lien douane.gouv.fr]) et les pratiques de Global Blue ([lien globalblue.com]), en date du [Date MAJ Site]. Les règles peuvent changer. Vérifiez toujours les sources officielles. Sézane n'est pas responsable des infos obsolètes ou refus de détaxe."
-   },
+  // --- DISCLAIMER (TEXTE SIMPLIFIÉ) ---
+  disclaimer: {
+    titre: "Mentions & Avertissement", // Garder titre complet
+    texte: "Infos indicatives basées sur textes officiels ([lien douane.gouv.fr]) & pratiques Global Blue ([lien globalblue.com]) au [Date MAJ Site]. Règles sujettes à changement. Vérifiez toujours sources officielles. Sézane non responsable si infos obsolètes ou refus détaxe." // Texte concis
+  },
 
-} as const; // Fin de l'export default
+} as const; // Fin export
