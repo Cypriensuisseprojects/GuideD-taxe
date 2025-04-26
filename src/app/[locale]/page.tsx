@@ -17,11 +17,6 @@ import IconTrain from '@/components/icons/train.svg';
 import IconRoad from '@/components/icons/truck.svg';
 import IconPort from '@/components/icons/anchor.svg';
 
-// --- Types et Interfaces ---
-interface Props {
-   params: { locale: string };
-}
-
 // --- Helpers de Rendu (Simplifiés - sans RenderHTML) ---
 const ExternalLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
    <a href={href} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>{children}</a>
