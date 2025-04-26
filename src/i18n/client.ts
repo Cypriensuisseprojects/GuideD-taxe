@@ -1,6 +1,6 @@
 // src/i18n/client.ts
 import { createI18nClient } from 'next-international/client';
-import { locales, defaultLocale } from './config';
+import { /* locales, */ defaultLocale } from './config'; // Commenter ou supprimer locales
 
 export const { useI18n, useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = createI18nClient({
   [defaultLocale]: () => import('./fr'),

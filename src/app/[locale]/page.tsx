@@ -3,7 +3,6 @@ import React from 'react';
 // Utiliser getI18n global et getScopedI18n seulement pour metadata
 import { getI18n, getScopedI18n } from '@/i18n/server';
 import styles from './page.module.css'; // Styles spécifiques
-import Link from 'next/link'; // Pour les liens externes/internes via helpers
 
 // --- IMPORTER LES ICÔNES SVG ---
 import IconResidence from '@/components/icons/map-pin.svg';
@@ -22,8 +21,6 @@ import IconPort from '@/components/icons/anchor.svg';
 interface Props {
    params: { locale: string };
 }
-type FaqQuestionKey = `faq.q${number}_q`;
-type FaqAnswerKey = `faq.q${number}_a`;
 
 // --- Helpers de Rendu (Simplifiés - sans RenderHTML) ---
 const ExternalLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
@@ -51,7 +48,7 @@ const renderTextWithInternalLinks = (textInput: unknown) => {
 
 
 // --- Composant Page Principal ---
-export default async function Home({ params }: Props) {
+export default async function Home({ params: _params }: Props) {
    const t = await getI18n(); // Utiliser t() global
    const siteUpdateDate = "25/04/2025"; // TODO: Mettre à jour
 
@@ -399,7 +396,7 @@ export default async function Home({ params }: Props) {
 }
 
 // --- GENERATE METADATA ---
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params: _params }: Props) {
    try {
       const metadataContent = await getScopedI18n('metadata');
       return {
