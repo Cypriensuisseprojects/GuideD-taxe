@@ -1,4 +1,4 @@
-// src/app/[locale]/layout.tsx (Version Complète Corrigée pour Next.js 15+)
+// src/app/[locale]/layout.tsx (Version Complète avec Typage Précis pour params)
 import React from 'react';
 // Importer getStaticParams pour la génération statique des locales
 import { getStaticParams } from '@/i18n/server'; // Assurez-vous que ce chemin est correct
@@ -6,61 +6,52 @@ import { getStaticParams } from '@/i18n/server'; // Assurez-vous que ce chemin e
 import ClientLayout from '@/components/ClientLayout'; // Assurez-vous que ce chemin est correct
 
 // Fonction pour générer les paramètres statiques pour chaque langue (ex: /fr, /en)
-// Recommandé pour SSG (Static Site Generation) et performances
 export async function generateStaticParams() {
-  // Récupère la liste des locales depuis la configuration i18n
-  // getStaticParams de next-international retourne : Promise<{ locale: string }[]>
   const localesParams = await getStaticParams();
-  return localesParams; // Retourne le tableau [{ locale: 'fr' }, { locale: 'en' }, ...]
+  return localesParams; // Retourne [{ locale: 'fr' }, { locale: 'en' }, ...]
 }
 
-// Interface définissant les props reçues par ce layout serveur
+// Interface définissant les props attendues par ce layout
 interface LocaleLayoutProps {
-  children: React.ReactNode;   // Le contenu de la page enfant (ex: page.tsx)
-  // 'params' est fourni par Next.js et contient les segments dynamiques de l'URL.
-  // Dans Next.js 15+, il est traité comme une API asynchrone.
-  // Utiliser 'any' est une solution rapide pour contourner les erreurs de type strictes,
-  // l'idéal serait un type plus précis si fourni par Next.js ou la bibliothèque i18n.
-  params: any;
+  children: React.ReactNode;   // Le contenu de la page enfant
+  // --- CORRECTION ESLint : Remplacer 'any' par un type plus précis ---
+  // Indique que params est un objet qui peut contenir une clé 'locale' optionnelle de type string.
+  params: { locale?: string };
+  // Alternative possible si locale pouvait être un tableau (moins probable ici) :
+  // params: { locale?: string | string[] };
 }
 
 // Le composant Layout spécifique à la locale (Server Component)
-// Déclaré 'async' pour pouvoir utiliser 'await' sur les API dynamiques
-export default async function LocaleLayout({ children, params }: Readonly<LocaleLayoutProps>) { // Readonly est optionnel ici
+// Déclaré 'async' pour pouvoir utiliser 'await'
+export default async function LocaleLayout({ children, params }: LocaleLayoutProps) { // Retiré Readonly
 
-  let locale: string | undefined;
+  let locale: string = 'fr'; // Initialiser avec la locale par défaut
 
   try {
-    // --- CORRECTION MAJEURE : Utiliser 'await' sur params ---
-    // C'est la manière requise par Next.js 15+ pour accéder aux données dynamiques
+    // Utiliser 'await' sur params comme requis par Next.js 15+
+    // Même si le type est { locale?: string }, l'await est pour la mécanique Next.js
     const resolvedParams = await params;
-    // Accéder à la propriété 'locale' APRÈS avoir résolu 'params'
-    // Utiliser l'optional chaining par sécurité
-    locale = resolvedParams?.locale;
 
-    // Vérification simple si la locale est valide (optionnel mais recommandé)
-    if (!locale || typeof locale !== 'string') {
-        console.error("Locale invalide ou non trouvée dans les paramètres résolus:", resolvedParams);
-        // Définir une locale par défaut comme fallback en cas d'erreur critique
-        locale = 'fr'; // Ou votre locale par défaut définie dans i18n/config.ts
+    // Accéder à 'locale' après await et vérifier si c'est une string valide
+    if (resolvedParams?.locale && typeof resolvedParams.locale === 'string') {
+      locale = resolvedParams.locale; // Assigner la locale trouvée
+    } else {
+      console.warn(`Locale invalide ou non trouvée dans les params (${resolvedParams?.locale}), utilisation du fallback '${locale}'.`);
     }
 
   } catch (error) {
-      console.error("Erreur lors de la résolution des paramètres ou de l'accès à la locale:", error);
-      // Définir une locale par défaut en cas d'erreur inattendue
-      locale = 'fr'; // Fallback
+      console.error("Erreur lors de la résolution des paramètres pour la locale:", error);
+      // 'locale' reste à sa valeur par défaut 'fr' en cas d'erreur
+      console.warn(`Utilisation de la locale par défaut '${locale}' suite à une erreur.`);
   }
 
-
-  // Rendre le ClientLayout en lui passant la locale résolue (string)
-  // Le ClientLayout contient le Header, Footer, et le I18nProviderClient
+  // Rendre le ClientLayout en lui passant la locale déterminée (garantie d'être une string)
   return (
-    // Assurer qu'on passe une string valide à ClientLayout, avec un fallback
-    <ClientLayout locale={locale ?? 'fr'}>
-      {children} {/* La page enfant (ex: page.tsx) sera rendue ici */}
+    <ClientLayout locale={locale}>
+      {children}
     </ClientLayout>
   );
 }
 
-// Note : Les métadonnées spécifiques à la langue (titre, description) sont gérées
-// dans le fichier page.tsx correspondant via la fonction generateMetadata.
+// Note : Les métadonnées spécifiques (titre, description) sont gérées
+// dans le fichier page.tsx via la fonction generateMetadata.
