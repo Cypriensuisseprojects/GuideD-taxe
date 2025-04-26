@@ -48,7 +48,7 @@ const renderTextWithInternalLinks = (textInput: unknown) => {
 
 
 // --- Composant Page Principal ---
-export default async function Home({ params: _params }: Props) {
+export default async function Home() {
    const t = await getI18n(); // Utiliser t() global
    const siteUpdateDate = "25/04/2025"; // TODO: Mettre à jour
 
@@ -396,7 +396,7 @@ export default async function Home({ params: _params }: Props) {
 }
 
 // --- GENERATE METADATA ---
-export async function generateMetadata({ params: _params }: Props) {
+export async function generateMetadata() {
    try {
       const metadataContent = await getScopedI18n('metadata');
       return {
