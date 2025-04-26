@@ -6,7 +6,7 @@ import { getStaticParams } from '@/i18n/server';
 import ClientLayout from '@/components/ClientLayout';
 
 // Génère les paramètres statiques pour 'fr' et 'en' (ou autres locales définies)
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return getStaticParams();
 }
 
@@ -17,7 +17,7 @@ interface LocaleLayoutProps {
 }
 
 // Le composant Layout pour chaque locale (Server Component)
-export default function LocaleLayout({ children, params: { locale } }: Readonly<LocaleLayoutProps>) {
+export default function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
   // Extrait directement 'locale' des params dans la signature de la fonction
 
   // Rend le ClientLayout en lui passant la locale (string) et les enfants (page)

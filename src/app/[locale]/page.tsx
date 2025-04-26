@@ -78,47 +78,6 @@ export default async function Home({ params }: Props) {
       });
    };
 
-   // --- Helper FAQ ---
-   const renderFaq = () => {
-      const categoriesMap: { key: string; titleKey: string; questions: number[] }[] = [
-         { key: 'eligibility', titleKey: 'faq.categories.eligibility', questions: [1, 2, 3] },
-         { key: 'purchase', titleKey: 'faq.categories.purchase', questions: [4, 5, 6] },
-         { key: 'departure', titleKey: 'faq.categories.departure', questions: [7, 8, 9, 15] },
-         { key: 'refund', titleKey: 'faq.categories.refund', questions: [11, 12, 13] },
-         { key: 'problems', titleKey: 'faq.categories.problems', questions: [10, 14] }
-      ];
-      type CategoryKey = 'eligibility' | 'purchase' | 'departure' | 'refund' | 'problems';
-      type FaqCategoryTitleKey = `faq.categories.${CategoryKey}`;
-
-      return categoriesMap.map(category => {
-         const categoryTitle = t(category.titleKey as FaqCategoryTitleKey);
-         if (!categoryTitle || typeof categoryTitle !== 'string' || categoryTitle === category.titleKey) return null;
-
-         return (
-            <div key={category.key} className={styles.faqCategory}>
-               <h3 className={styles.faqCategoryTitle}>{categoryTitle}</h3>
-               {category.questions.map(num => {
-                  const questionKey = `faq.q${num}_q` as FaqQuestionKey;
-                  const answerKey = `faq.q${num}_a` as FaqAnswerKey;
-                  const questionText = t(questionKey);
-                  const answerText = t(answerKey);
-
-                  if (!questionText || typeof questionText !== 'string' || questionText === questionKey ||
-                     !answerText || typeof answerText !== 'string' || answerText === answerKey) return null;
-
-                  return (
-                     <details key={`q${num}`} className={styles.faqItem}>
-                        <summary>{questionText}</summary>
-                        {/* Utiliser renderTextWithInternalLinks pour gérer le lien dans Q8 */}
-                        <p>{renderTextWithInternalLinks(answerText)}</p>
-                     </details>
-                  );
-               })}
-            </div>
-         );
-      });
-   };
-
    // --- Rendu JSX de la Page ---
    return (
       <div>
@@ -336,12 +295,98 @@ export default async function Home({ params }: Props) {
          </section>
          {/* --- FIN SECTION OU VALIDER --- */}
 
-         {/* --- SECTION FAQ --- */}
+         {/* --- SECTION FAQ (Affichage Explicite par Catégorie) --- */}
          <section id="faq" className={styles.pageSection}>
             <h2>{t('faq.titre')}</h2>
             <p>{t('faq.intro')}</p>
-            {renderFaq()} {/* Utilise le helper qui gère les catégories */}
-         </section>
+
+            {/* Catégorie: Éligibilité */}
+            <div className={styles.faqCategory}>
+               <h3 className={styles.faqCategoryTitle}>{t('faq.categories.eligibility')}</h3>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q1_q')}</summary>
+                  <p>{t('faq.q1_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q2_q')}</summary>
+                  <p>{t('faq.q2_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q3_q')}</summary>
+                  <p>{t('faq.q3_a')}</p>
+               </details>
+            </div>
+
+            {/* Catégorie: Achat & Formulaire */}
+            <div className={styles.faqCategory}>
+               <h3 className={styles.faqCategoryTitle}>{t('faq.categories.purchase')}</h3>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q4_q')}</summary>
+                  <p>{t('faq.q4_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q5_q')}</summary>
+                  <p>{t('faq.q5_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q6_q')}</summary>
+                  <p>{t('faq.q6_a')}</p>
+               </details>
+            </div>
+
+            {/* Catégorie: Départ & Validation */}
+            <div className={styles.faqCategory}>
+               <h3 className={styles.faqCategoryTitle}>{t('faq.categories.departure')}</h3>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q7_q')}</summary>
+                  <p>{t('faq.q7_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q8_q')}</summary>
+                  {/* Utiliser le helper pour le lien interne dans la réponse Q8 */}
+                  <p>{renderTextWithInternalLinks(t('faq.q8_a'))}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q9_q')}</summary>
+                  <p>{t('faq.q9_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q15_q')}</summary>
+                  <p>{t('faq.q15_a')}</p>
+               </details>
+            </div>
+
+            {/* Catégorie: Remboursement */}
+            <div className={styles.faqCategory}>
+               <h3 className={styles.faqCategoryTitle}>{t('faq.categories.refund')}</h3>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q11_q')}</summary>
+                  <p>{t('faq.q11_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q12_q')}</summary>
+                  <p>{t('faq.q12_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q13_q')}</summary>
+                  <p>{t('faq.q13_a')}</p>
+               </details>
+            </div>
+
+            {/* Catégorie: Problèmes & Cas Particuliers */}
+            <div className={styles.faqCategory}>
+               <h3 className={styles.faqCategoryTitle}>{t('faq.categories.problems')}</h3>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q10_q')}</summary>
+                  <p>{t('faq.q10_a')}</p>
+               </details>
+               <details className={styles.faqItem}>
+                  <summary>{t('faq.q14_q')}</summary>
+                  <p>{t('faq.q14_a')}</p>
+               </details>
+            </div>
+
+         </section> {/* Fin Section FAQ */}
 
          {/* --- DISCLAIMER --- */}
          <section id="disclaimer" className={styles.pageSection} style={{ borderTop: 'none', marginTop: 'calc(var(--spacing-unit) * 4)' }}>
