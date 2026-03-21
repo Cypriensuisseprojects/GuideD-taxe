@@ -1,7 +1,7 @@
 // src/app/[locale]/page.tsx (Version Complète pour i18n Simplifié)
 import React from 'react';
-// Utiliser getI18n global et getScopedI18n seulement pour metadata
-import { getI18n, getScopedI18n } from '@/i18n/server';
+// Ajout de setStaticParamsLocale ici !
+import { getI18n, getScopedI18n, setStaticParamsLocale } from '@/i18n/server';
 import styles from './page.module.css'; // Styles spécifiques
 
 // --- IMPORTER LES ICÔNES SVG ---
@@ -41,9 +41,17 @@ const renderTextWithInternalLinks = (textInput: unknown) => {
    });
 };
 
+// --- Types pour Next.js 15 ---
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
 // --- Composant Page Principal ---
-export default async function Home() {
+export default async function Home({ params }: Props) {
+   // 1. Récupérer et définir la locale de manière statique pour le build Next.js
+   const { locale } = await params;
+   setStaticParamsLocale(locale);
+
    const t = await getI18n(); // Utiliser t() global
    const siteUpdateDate = "25/04/2025"; // TODO: Mettre à jour
 
@@ -391,8 +399,12 @@ export default async function Home() {
 }
 
 // --- GENERATE METADATA ---
-export async function generateMetadata() {
+export async function generateMetadata({ params }: Props) {
    try {
+      // 2. Il faut aussi le faire ici pour le référencement (SEO)
+      const { locale } = await params;
+      setStaticParamsLocale(locale);
+
       const metadataContent = await getScopedI18n('metadata');
       return {
          title: metadataContent('title'),
