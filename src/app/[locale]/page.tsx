@@ -1,7 +1,11 @@
 // src/app/[locale]/page.tsx (Version Complète pour i18n Simplifié)
 import React from 'react';
-// Ajout de setStaticParamsLocale ici !
-import { getI18n, getScopedI18n, setStaticParamsLocale } from '@/i18n/server';
+
+// 1. On importe setStaticParamsLocale DIRECTEMENT depuis la librairie
+import { setStaticParamsLocale } from 'next-international/server';
+// 2. On importe tes fonctions locales depuis ton fichier de config
+import { getI18n, getScopedI18n } from '@/i18n/server';
+
 import styles from './page.module.css'; // Styles spécifiques
 
 // --- IMPORTER LES ICÔNES SVG ---
