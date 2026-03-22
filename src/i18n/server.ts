@@ -16,8 +16,8 @@ const i18n = createI18nServer({
 export const { getI18n, getScopedI18n, getCurrentLocale } = i18n;
 
 // 3. On force l'export de setStaticParamsLocale en contournant TypeScript
-// (La fonction existe au runtime mais manque dans les types de next-international)
-export const setStaticParamsLocale = (i18n as any).setStaticParamsLocale;
+// de façon propre (sans utiliser "any" qui est bloqué par ESLint)
+export const setStaticParamsLocale = (i18n as unknown as { setStaticParamsLocale: (locale: string) => void }).setStaticParamsLocale;
 
 // 4. On garde ta génération statique des paramètres
 export function getStaticParams() {
