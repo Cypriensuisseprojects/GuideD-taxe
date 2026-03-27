@@ -74,14 +74,9 @@ export default {
       titre: "Which products are eligible?",
       eligibles: "Most Sézane items (clothing, leather goods, shoes, accessories) are eligible.",
       exclus_titre: "Please note, certain goods are generally EXCLUDED from VAT refunds:",
-      // --- VÉRIFICATION : Ceci est bien un tableau de strings ---
-      exclus_liste: [
-        "❌ Manufactured tobacco",
-        "❌ Services (repairs, transport, accommodation, etc.)",
-        "❌ Goods subject to embargo",
-        "❌ Weapons (Categories A and B)",
-        "❌ Cultural goods exceeding certain thresholds",
-        "❌ Products consumed locally",
+      exclus_1: "❌ Services (repairs, transport, accommodation, etc.)",
+      exclus_2: "❌ Goods subject to embargo",
+      exclus_3: "❌ Products consumed locally",
       ],
       // --- FIN VÉRIFICATION ---
       lien_douanes_texte: "For a complete list, please consult the official French Customs website", // Texte pour le lien externe
